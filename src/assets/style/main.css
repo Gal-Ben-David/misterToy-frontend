@@ -1,0 +1,10 @@
+/* setup */
+@import './setup/vars.css';
+
+/* basis */
+
+@import './basis/base.css';
+
+/* cmps */
+@import './cmps/ToyList.css';
+@import './cmps/ToyFilter.css';
