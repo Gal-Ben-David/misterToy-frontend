@@ -1,0 +1,20 @@
+/* FONTS */
+@font-face {
+    font-family: Mukta-Light;
+    src: url('../../fonts/Mukta/Mukta-Light.ttf');
+}
+
+@font-face {
+    font-family: Mukta-Regular;
+    src: url('../../fonts/Mukta/Mukta-Regular.ttf');
+}
+
+@font-face {
+    font-family: Mukta-Medium;
+    src: url('../../fonts/Mukta/Mukta-Medium.ttf');
+}
+
+@font-face {
+    font-family: Mukta-ExtraBold;
+    src: url('../../fonts/Mukta/Mukta-ExtraBold.ttf');
+}

@@ -12,7 +12,7 @@ export function ToyList({ toys, onRemoveToy }) {
                     <ToyPreview toy={toy} />
 
                     <div>
-                        <button onClick={() => onRemoveToy(toy._id)}>Remove</button>
+                        <button className="btn btn-remove-toy" onClick={() => onRemoveToy(toy._id)}>Remove</button>
                         {/* <button onClick={() => onEditToy(toy)}>Edit</button> */}
                     </div>
                 </li>)}

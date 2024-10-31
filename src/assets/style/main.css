@@ -1,10 +1,17 @@
+/* fonts */
+@import './setup/fonts.css';
+
 /* setup */
 @import './setup/vars.css';
 
 /* basis */
+@import './basics/layout.css';
+@import './basics/base.css';
 
-@import './basis/base.css';
+/* pages */
+@import './pages/ToyIndex.css';
 
 /* cmps */
 @import './cmps/ToyList.css';
 @import './cmps/ToyFilter.css';
+@import './cmps/AppHeader.css';

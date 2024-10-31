@@ -1,0 +1,11 @@
+.header-container {
+    display: flex;
+    justify-content: space-between;
+
+    padding: 1em;
+}
+
+.app-nav {
+    display: flex;
+    gap: 1em;
+}

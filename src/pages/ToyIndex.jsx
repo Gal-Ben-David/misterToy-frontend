@@ -35,23 +35,33 @@ export function ToyIndex() {
     }
 
     return (
-        <div>
-            <h3>Toys App</h3>
-            <main>
-                <Link to="/toy/edit">Add Toy</Link>
-                <ToyFilter filterBy={filterBy} onSetFilter={onSetFilter} />
+        <main className="main-toys">
+            <section className="introduction">
+                <div className="introduction-content">
+                    <div className='description'>
+                        <h1>The Magic of Timeless Toys ✨</h1>
+                        <p>Discover our lovingly crafted collection of wooden toys and huggable teddies!</p>
+                    </div>
+                    <div className='introduction-img'>
+                        <img src="src/assets/img/teddy.png" />
+                    </div>
+                </div>
+            </section>
 
-                {!isLoading
-                    ? <ToyList
-                        toys={toys}
-                        onRemoveToy={onRemoveToy}
-                    // onEditCar={onEditCar}
-                    />
-                    : <div>Loading...</div>
-                }
-                <hr />
-            </main>
-        </div>
+
+            <ToyFilter filterBy={filterBy} onSetFilter={onSetFilter} />
+            <Link to="/toy/edit">Add Toy</Link>
+
+            {!isLoading
+                ? <ToyList
+                    toys={toys}
+                    onRemoveToy={onRemoveToy}
+                // onEditCar={onEditCar}
+                />
+                : <div>Loading...</div>
+            }
+            <hr />
+        </main>
     )
 
 }
