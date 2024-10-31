@@ -36,15 +36,19 @@ export function ToyFilter({ filterBy, onSetFilter }) {
 
     return (
         <section className="toy-filter">
+            {/* <h1>Find your special toy</h1> */}
             <form >
-                <label htmlFor="toy-name">Toy name: </label>
-                <input type="text"
-                    name="name"
-                    id="toy-name"
-                    placeholder="By name"
-                    value={filterByToEdit.txt}
-                    onChange={handleChange}
-                />
+                <label className="toy-name" htmlFor="toy-name">
+                    <button className="search-btn"><i className="fa-solid fa-magnifying-glass"></i></button>
+                    <input type="text"
+                        name="name"
+                        id="toy-name"
+                        className="toy-name"
+                        placeholder="Find your special toy"
+                        value={filterByToEdit.txt}
+                        onChange={handleChange}
+                    />
+                </label>
 
                 <select className="toy-inStock" name="inStock" onChange={handleChange} value={filterBy.inStock}>
                     <option value="all">All</option>
@@ -52,6 +56,7 @@ export function ToyFilter({ filterBy, onSetFilter }) {
                     <option value="not-available">Not Available</option>
                 </select>
 
+                <h4>Categories</h4>
                 <select className="toy-inStock" name="labels" onChange={handleChange} value={filterBy.labels}>
                     <option value="">Select</option>
                     {LABELS.map((label, i) =>

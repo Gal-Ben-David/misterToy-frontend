@@ -1,0 +1,7 @@
+p.available {
+    color: green;
+}
+
+p.not-available {
+    color: red;
+}

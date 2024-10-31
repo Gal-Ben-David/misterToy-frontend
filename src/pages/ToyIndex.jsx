@@ -41,13 +41,13 @@ export function ToyIndex() {
                     <div className='description'>
                         <h1>The Magic of Timeless Toys ✨</h1>
                         <p>Discover our lovingly crafted collection of wooden toys and huggable teddies!</p>
+                        <button className='btn btn-stores-locations'>Find Our Stores</button>
                     </div>
                     <div className='introduction-img'>
                         <img src="src/assets/img/teddy.png" />
                     </div>
                 </div>
             </section>
-
 
             <ToyFilter filterBy={filterBy} onSetFilter={onSetFilter} />
             <Link to="/toy/edit">Add Toy</Link>

@@ -39,4 +39,5 @@ iframe {
     border: none;
     border-radius: 0.5em;
     font-family: inherit;
+    cursor: pointer;
 }

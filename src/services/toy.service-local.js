@@ -65,8 +65,8 @@ function save(toy) {
     }
 }
 
-function getEmptyToy(createdAt = Date.now(), name = '', price = 100, labels = [], inStock = true) {
-    return { createdAt, name, price, labels, inStock }
+function getEmptyToy(createdAt = Date.now(), name = '', price = 100, labels = [], inStock = true, imgUrl = '') {
+    return { createdAt, name, price, labels, inStock, imgUrl }
 }
 
 function getDefaultFilter() {
@@ -78,36 +78,41 @@ function _createToys() {
     if (!toys || !toys.length) {
         toys = [
             _createToy(1112223,
-                'Talking Doll',
+                'Giraffe',
                 123,
-                ['Doll', 'Battery Powered', 'Baby'],
-                true
+                ['Doll', 'Baby'],
+                true,
+                'src/assets/img/toys/giraffe.JPG'
+            ),
+            _createToy(1112226,
+                'Rabbit',
+                90,
+                ['Battery Powered'],
+                true,
+                'src/assets/img/toys/rabbit.JPG'
+            ),
+            _createToy(1112225,
+                'Rainbow Rings',
+                155,
+                ['Box Game'],
+                true,
+                'src/assets/img/toys/rings.JPG'
             ),
             _createToy(1112224,
                 'Skateboard',
                 200,
                 ['On Wheels'],
-                false
+                false,
+                'src/assets/img/toys/Skateboard.JPG'
             ),
-            _createToy(1112225,
-                'Monopoly',
-                155,
-                ['Box Game'],
-                true
-            ),
-            _createToy(1112226,
-                'Toy Robot Dog',
-                90,
-                ['Battery Powered'],
-                true
-            )
+
         ]
         utilService.saveToStorage(STORAGE_KEY, toys)
     }
 }
 
-function _createToy(createdAt, name, price, labels, inStock) {
-    const toy = getEmptyToy(createdAt, name, price, labels, inStock)
+function _createToy(createdAt, name, price, labels, inStock, imgUrl) {
+    const toy = getEmptyToy(createdAt, name, price, labels, inStock, imgUrl)
     toy._id = utilService.makeId()
     return toy
 }

@@ -15,7 +15,7 @@
 
     display: grid;
     grid-template-columns: minmax(20px, 280px) 1fr minmax(20px, 280px);
-    background-color: var(--clr-bg-2);
+    background-color: var(--clr-bg-3);
 
     padding: 2em 1em;
 }
@@ -43,4 +43,8 @@
 .introduction p {
     font-size: 1.2rem;
     width: 20em;
+}
+
+.btn-stores-locations {
+    background-color: var(--clr-btn-1);
 }
