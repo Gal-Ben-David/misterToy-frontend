@@ -26,7 +26,7 @@ function query(filterBy = {}) {
                 toys = toys.filter(toy => regex.test(toy.name))
             }
             if (filterBy.labels.length !== 0) {
-                toys = toys.filter(toy => toy.labels.map(label => label.toLowerCase()).includes(filterBy.labels.toLowerCase()))
+                toys = toys.filter(toy => filterBy.labels.some(label => toy.labels.includes(label)))
             }
             if (filterBy.inStock !== 'all') {
                 toys = toys.filter(toy => filterBy.inStock === 'available' ? toy.inStock : !toy.inStock)

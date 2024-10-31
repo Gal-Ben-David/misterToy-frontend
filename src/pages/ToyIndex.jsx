@@ -58,7 +58,7 @@ export function ToyIndex() {
                     onRemoveToy={onRemoveToy}
                 // onEditCar={onEditCar}
                 />
-                : <div>Loading...</div>
+                : <div className="loader"></div>
             }
             <hr />
         </main>

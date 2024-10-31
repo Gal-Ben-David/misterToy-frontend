@@ -12,12 +12,13 @@
 
 .introduction {
     grid-column: 1/-1;
+    justify-self: stretch;
 
     display: grid;
     grid-template-columns: minmax(20px, 280px) 1fr minmax(20px, 280px);
     background-color: var(--clr-bg-3);
 
-    padding: 2em 1em;
+    padding: 2em 0;
 }
 
 .introduction>* {

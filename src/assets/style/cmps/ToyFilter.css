@@ -3,6 +3,10 @@
     border-radius: 0.5em;
 }
 
+.toy-filter>* {
+    grid-column: 2;
+}
+
 .toy-filter input.toy-name {
     width: 100%;
     height: 2em;
@@ -44,4 +48,36 @@ label.toy-name {
 
     transform: translate(0, -50%);
     cursor: pointer;
+}
+
+.filter-form {
+    display: flex;
+    gap: 6em;
+}
+
+.toy-label-filter {
+    margin-inline-start: 0.6em;
+}
+
+.loader {
+    height: 4px;
+    width: 130px;
+    --c: no-repeat linear-gradient(#6100ee 0 0);
+    background: var(--c), var(--c), #d7b8fc;
+    background-size: 60% 100%;
+    animation: l16 3s infinite;
+}
+
+@keyframes l16 {
+    0% {
+        background-position: -150% 0, -150% 0
+    }
+
+    66% {
+        background-position: 250% 0, -150% 0
+    }
+
+    100% {
+        background-position: 250% 0, 250% 0
+    }
 }
