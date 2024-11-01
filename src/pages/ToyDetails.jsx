@@ -26,7 +26,7 @@ export function ToyDetails() {
             <h4>Price: ${toy.price}</h4>
             <p>🧸</p>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-            <h4>In Stock: {toy.inStock ? 'Available' : 'Not in stock'}</h4>
+            <h4>In Stock: {toy.inStock ? 'Available' : 'Out of stock'}</h4>
             <h4>Categories:</h4>
             <ul>
                 {toy.labels.map((label, i) =>

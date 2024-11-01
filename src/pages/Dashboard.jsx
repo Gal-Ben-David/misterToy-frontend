@@ -78,12 +78,16 @@ export function Dashboard() {
     return (
         <section className="dashboard">
             <h2>Dashboard 📊</h2>
-            <div className="doughnut-stats">
-                <h4>Inventory by label</h4>
-                {dataLabelsStats && <Pie data={dataLabelsStats} />}
+            <div className="charts">
+                <div className="bar-stats">
+                    <h4>Number of items in stock versus out of stock</h4>
+                    {dataStockStats && <Chart data={dataStockStats} />}
+                </div>
 
-                <h4>Number of items in stock versus out of stock</h4>
-                {dataStockStats && <Chart data={dataStockStats} />}
+                <div className="doughnut-stats">
+                    <h4>Inventory by label</h4>
+                    {dataLabelsStats && <Pie data={dataLabelsStats} />}
+                </div>
             </div>
         </section>
     )
