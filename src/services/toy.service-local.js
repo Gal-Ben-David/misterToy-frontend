@@ -4,7 +4,7 @@ import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
 
 const STORAGE_KEY = 'toyDB'
-const LABELS = ['On wheels', 'Box game', 'Art', 'Baby', 'Doll', 'Puzzle',
+const LABELS = ['On Wheels', 'Box Game', 'Art', 'Baby', 'Doll', 'Puzzle',
     'Outdoor', 'Battery Powered']
 
 _createToys()
@@ -17,7 +17,8 @@ export const toyService = {
     getEmptyToy,
     getDefaultFilter,
     getLabelsStats,
-    getStockStatus
+    getStockStatus,
+    getLabels
 }
 
 function query(filterBy = {}) {
@@ -145,6 +146,10 @@ function getStockStatus() {
             }, { available: 0, notAvailable: 0 })
             return stockStatus
         })
+}
+
+function getLabels() {
+    return LABELS
 }
 
 function _getLabelsMap(toys) {

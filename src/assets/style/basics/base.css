@@ -5,6 +5,7 @@
 body {
     margin: 0;
     font-family: 'Mukta-Regular';
+    color: var(--clr-font-1);
 }
 
 h1,

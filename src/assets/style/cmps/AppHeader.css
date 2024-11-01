@@ -8,6 +8,7 @@
 .app-nav {
     display: flex;
     gap: 1em;
+    align-items: center;
 }
 
 .logo {

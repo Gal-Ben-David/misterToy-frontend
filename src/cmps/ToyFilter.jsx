@@ -1,13 +1,12 @@
 import { useEffect, useRef, useState } from "react"
 import { utilService } from "../services/util.service.js"
+import { toyService } from "../services/toy.service-local.js"
 
 export function ToyFilter({ filterBy, onSetFilter }) {
 
     const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy })
+    const [labels, setLabels] = useState(toyService.getLabels())
     onSetFilter = useRef(utilService.debounce(onSetFilter, 300))
-
-    const LABELS = ['On wheels', 'Box game', 'Art', 'Baby', 'Doll', 'Puzzle',
-        'Outdoor', 'Battery Powered']
 
     useEffect(() => {
         onSetFilter.current(filterByToEdit)
@@ -50,7 +49,7 @@ export function ToyFilter({ filterBy, onSetFilter }) {
             <form className="filter-form">
                 <div className="filter-form-dropdown-menu">
                     <h4>Categories</h4>
-                    {LABELS.map((label) => (
+                    {labels.map((label) => (
                         <div key={label} className="dropdown-item">
                             <input
                                 type="checkbox"
