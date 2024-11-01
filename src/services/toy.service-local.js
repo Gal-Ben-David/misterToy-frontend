@@ -15,7 +15,8 @@ export const toyService = {
     save,
     remove,
     getEmptyToy,
-    getDefaultFilter
+    getDefaultFilter,
+    getLabelsStats
 }
 
 function query(filterBy = {}) {
@@ -87,7 +88,7 @@ function _createToys() {
             _createToy(1112226,
                 'Rabbit',
                 90,
-                ['Battery Powered'],
+                ['Doll', 'Baby'],
                 true,
                 'src/assets/img/toys/rabbit.JPG'
             ),
@@ -115,6 +116,33 @@ function _createToy(createdAt, name, price, labels, inStock, imgUrl) {
     const toy = getEmptyToy(createdAt, name, price, labels, inStock, imgUrl)
     toy._id = utilService.makeId()
     return toy
+}
+
+function getLabelsStats() {
+    return storageService.query(STORAGE_KEY)
+        .then(toys => {
+            const labelsMap = _getLabelsMap(toys)
+            const totalInStockToys = toys.filter(toy => toy.inStock).length
+            const data = Object.keys(labelsMap)
+                .map(label =>
+                ({
+                    title: label,
+                    value: Math.round((labelsMap[label] / totalInStockToys) * 100)
+                }))
+            console.log('data:', data)
+            return data
+        })
+}
+
+function _getLabelsMap(toys) {
+    const toyLabels = toys.filter(toy => toy.inStock).map(toy => toy.labels)
+    const labelsMap = toyLabels.flat().reduce((map, label) => {
+        if (!map[label]) map[label] = 0
+        map[label]++
+        return map
+    }, {})
+    console.log('labelsMap', labelsMap)
+    return labelsMap
 }
 
 // TEST DATA

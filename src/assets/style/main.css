@@ -10,6 +10,7 @@
 
 /* pages */
 @import './pages/ToyIndex.css';
+@import './pages/Dashboard.css';
 
 /* cmps */
 @import './cmps/ToyList.css';
