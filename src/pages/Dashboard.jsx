@@ -57,7 +57,7 @@ export function Dashboard() {
             datasets: [
                 {
                     type: 'bar',
-                    label: '#',
+                    label: '# items',
                     data: [stockStats.available, stockStats.notAvailable],
                     options: {
                         scales: {
@@ -77,9 +77,12 @@ export function Dashboard() {
 
     return (
         <section className="dashboard">
-            <h1>Dashboard 📊</h1>
+            <h2>Dashboard 📊</h2>
             <div className="doughnut-stats">
+                <h4>Inventory by label</h4>
                 {dataLabelsStats && <Pie data={dataLabelsStats} />}
+
+                <h4>Number of items in stock versus out of stock</h4>
                 {dataStockStats && <Chart data={dataStockStats} />}
             </div>
         </section>

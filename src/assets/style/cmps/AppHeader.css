@@ -9,3 +9,17 @@
     display: flex;
     gap: 1em;
 }
+
+.logo {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.logo h1 {
+    font-size: 1.5rem;
+}
+
+.img-teddy-bear-logo {
+    height: 4em;
+}

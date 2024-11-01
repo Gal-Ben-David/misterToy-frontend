@@ -55,29 +55,35 @@ label.toy-name {
     gap: 6em;
 }
 
+.filter-form-left-side {
+    display: grid;
+    gap: 1em;
+    align-items: center;
+}
+
 .toy-label-filter {
     margin-inline-start: 0.6em;
 }
 
-.loader {
-    height: 4px;
-    width: 130px;
-    --c: no-repeat linear-gradient(#6100ee 0 0);
-    background: var(--c), var(--c), #d7b8fc;
-    background-size: 60% 100%;
-    animation: l16 3s infinite;
+select.toy-inStock,
+select.tot-sort {
+    width: 100%;
+    border: none;
 }
 
-@keyframes l16 {
-    0% {
-        background-position: -150% 0, -150% 0
-    }
+select.toy-inStock:focus,
+select.tot-sort:focus {
+    outline: none;
+}
 
-    66% {
-        background-position: 250% 0, -150% 0
-    }
+fieldset {
+    border-radius: 0.5em;
+    border: 1px solid rgb(219, 219, 219);
+    padding: 0 1em 0.2em;
+}
 
-    100% {
-        background-position: 250% 0, 250% 0
-    }
+legend {
+    font-size: 0.9rem;
+    padding: 0 0.5em;
+
 }

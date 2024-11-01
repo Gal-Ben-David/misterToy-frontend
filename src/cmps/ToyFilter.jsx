@@ -76,12 +76,14 @@ export function ToyFilter({ filterBy, onSetFilter }) {
                             onChange={handleChange}
                         />
                     </label>
-
-                    <select className="toy-inStock" name="inStock" onChange={handleChange} value={filterBy.inStock}>
-                        <option value="all">All</option>
-                        <option value="available">Available</option>
-                        <option value="not-available">Not Available</option>
-                    </select>
+                    <fieldset>
+                        <legend>Stock</legend>
+                        <select className="toy-inStock" name="inStock" onChange={handleChange} value={filterBy.inStock}>
+                            <option value="all">All</option>
+                            <option value="available">Available</option>
+                            <option value="not-available">Not Available</option>
+                        </select>
+                    </fieldset>
 
 
                     {/* <select className="toy-inStock" name="labels" onChange={handleChange} value={filterBy.labels}>
@@ -90,14 +92,15 @@ export function ToyFilter({ filterBy, onSetFilter }) {
                         <option key={i} value={label}>{label}</option>
                     )}
                 </select> */}
-
-                    <h3> sort</h3>
-                    <select className="tot-sort" name="selector" onChange={handleChange}>
-                        <option value="">Select</option>
-                        <option value="name">Name</option>
-                        <option value="price">Price</option>
-                        <option value="createdAt">Created At</option>
-                    </select>
+                    <fieldset>
+                        <legend>Sort</legend>
+                        <select className="tot-sort" name="selector" onChange={handleChange}>
+                            <option value="">Select</option>
+                            <option value="name">Name</option>
+                            <option value="price">Price</option>
+                            <option value="createdAt">Created At</option>
+                        </select>
+                    </fieldset>
                 </div>
             </form>
         </section>
