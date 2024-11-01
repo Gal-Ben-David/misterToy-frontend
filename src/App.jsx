@@ -10,7 +10,7 @@ import { AppHeader } from './cmps/AppHeader.jsx'
 // import { AppFooter } from './cmps/AppFooter.jsx'
 
 // import { HomePage } from './pages/HomePage.jsx'
-// import { AboutUs } from './pages/AboutUs.jsx'
+import { About } from './pages/About.jsx'
 
 import { ToyIndex } from './pages/ToyIndex.jsx'
 import { store } from './store/store.js'
@@ -28,8 +28,8 @@ export default function App() {
           <AppHeader />
           <main className='main-layout'>
             <Routes>
-              {/* <Route element={<HomePage />} path="/" />
-              <Route element={<AboutUs />} path="/about" /> */}
+              {/* <Route element={<HomePage />} path="/" /> */}
+              <Route element={<About />} path="/about" />
               <Route element={<ToyIndex />} path="/" />
               {/* <Route element={<ToyEdit />} path="/toy/edit" /> */}
               <Route element={<ToyEdit />} path="/toy/edit/:toyId?" />

@@ -41,7 +41,7 @@ export function ToyIndex() {
                     <div className='description'>
                         <h1>The Magic of Timeless Toys ✨</h1>
                         <p>Discover our lovingly crafted collection of wooden toys and huggable teddies!</p>
-                        <button className='btn btn-stores-locations'>Find Our Stores</button>
+                        <Link to="/about"><button className='btn btn-stores-locations'>Find Our Stores</button></Link>
                     </div>
                     <div className='introduction-img'>
                         <img src="src/assets/img/teddy.png" />
