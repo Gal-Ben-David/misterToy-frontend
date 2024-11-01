@@ -1,31 +1,39 @@
 import { useEffect, useRef, useState } from "react"
 import { toyService } from "../services/toy.service-local.js"
 
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js'
+import { Chart as ChartJS, CategoryScale, ArcElement, Tooltip, Legend, BarElement, LinearScale } from 'chart.js'
 import { Pie } from 'react-chartjs-2'
+import { Chart } from 'react-chartjs-2'
 
-ChartJS.register(ArcElement, Tooltip, Legend)
+ChartJS.register(ArcElement, CategoryScale, Tooltip, Legend, BarElement, LinearScale)
 
 export function Dashboard() {
 
     const [labelsStats, setLabelsStats] = useState([])
-    const [data, setData] = useState(null)
+    const [stockStats, setStockStats] = useState({})
+    const [dataLabelsStats, setDataLabelsStats] = useState(null)
+    const [dataStockStats, setDataStockStats] = useState(null)
 
     useEffect(() => {
         toyService.getLabelsStats()
             .then(res => {
                 setLabelsStats(res)
             })
+
+        toyService.getStockStatus()
+            .then(res => {
+                setStockStats(res)
+            })
     }, [])
 
     useEffect(() => {
         if (labelsStats.length > 0) {
-            setData({
+            setDataLabelsStats({
                 labels: labelsStats.map(labelS => labelS.title),
                 datasets: [
                     {
                         type: 'doughnut',
-                        label: '# of Votes',
+                        label: '%',
                         data: labelsStats.map(labelS => labelS.value),
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.2)',
@@ -43,11 +51,36 @@ export function Dashboard() {
         }
     }, [labelsStats])
 
+    useEffect(() => {
+        setDataStockStats({
+            labels: ['In Stock', 'Not in stock'],
+            datasets: [
+                {
+                    type: 'bar',
+                    label: '#',
+                    data: [stockStats.available, stockStats.notAvailable],
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    },
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                    ]
+                },
+            ],
+        })
+    }, [dataLabelsStats])
+
     return (
         <section className="dashboard">
             <h1>Dashboard 📊</h1>
             <div className="doughnut-stats">
-                {data && <Pie data={data} />}
+                {dataLabelsStats && <Pie data={dataLabelsStats} />}
+                {dataStockStats && <Chart data={dataStockStats} />}
             </div>
         </section>
     )

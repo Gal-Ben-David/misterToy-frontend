@@ -16,7 +16,8 @@ export const toyService = {
     remove,
     getEmptyToy,
     getDefaultFilter,
-    getLabelsStats
+    getLabelsStats,
+    getStockStatus
 }
 
 function query(filterBy = {}) {
@@ -131,6 +132,18 @@ function getLabelsStats() {
                 }))
             console.log('data:', data)
             return data
+        })
+}
+
+function getStockStatus() {
+    return storageService.query(STORAGE_KEY)
+        .then(toys => {
+            const stockStatus = toys.reduce((acc, toy) => {
+                if (toy.inStock) acc.available++
+                else acc.notAvailable++
+                return acc
+            }, { available: 0, notAvailable: 0 })
+            return stockStatus
         })
 }
 
