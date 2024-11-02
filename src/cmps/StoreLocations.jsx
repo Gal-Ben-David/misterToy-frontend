@@ -14,59 +14,61 @@ export function StoreLocations() {
 
     return (
         // Important! Always set the container height explicitly
-        <section className="store-locations">
+        <section className="locations">
             <h1>Where Magic Happens</h1>
-            <div className="locations-buttons">
-                <button className="btn btn-location" onClick={() => onMapClicked({ lat: 32.068160, lng: 34.822548 })}>Ramat Gan</button>
-                <button className="btn btn-location" onClick={() => onMapClicked({ lat: 32.07484324375375, lng: 34.774144954225775 })}>Bograshov, Tel Aviv</button>
-                <button className="btn btn-location" onClick={() => onMapClicked({ lat: 32.094571, lng: 34.776700 })}>Dizengoff, Tel Aviv</button>
-                <button className="btn btn-location" onClick={() => onMapClicked({ lat: 32.07427776577913, lng: 34.80895441202367 })}>Giv'atayim</button>
-                <button className="btn btn-location" onClick={() => onMapClicked({ lat: 32.17143850675182, lng: 34.80159361895732 })}>Herzeliya</button>
-                <button className="btn btn-location" onClick={() => onMapClicked({ lat: 32.01764270237933, lng: 34.78037978989864 })}>Holon</button>
-            </div>
+            <div className="store-locations">
+                <div className="locations-buttons">
+                    <button className="btn btn-location" onClick={() => onMapClicked({ lat: 32.068160, lng: 34.822548 })}>Ramat Gan</button>
+                    <button className="btn btn-location" onClick={() => onMapClicked({ lat: 32.07484324375375, lng: 34.774144954225775 })}>Bograshov, Tel Aviv</button>
+                    <button className="btn btn-location" onClick={() => onMapClicked({ lat: 32.094571, lng: 34.776700 })}>Dizengoff, Tel Aviv</button>
+                    <button className="btn btn-location" onClick={() => onMapClicked({ lat: 32.07427776577913, lng: 34.80895441202367 })}>Giv'atayim</button>
+                    <button className="btn btn-location" onClick={() => onMapClicked({ lat: 32.17143850675182, lng: 34.80159361895732 })}>Herzeliya</button>
+                    <button className="btn btn-location" onClick={() => onMapClicked({ lat: 32.01764270237933, lng: 34.78037978989864 })}>Holon</button>
+                </div>
 
-            <div className="google-map" style={{ height: '50vh', width: '100%' }}>
-                <GoogleMapReact
-                    bootstrapURLKeys={{ key: "AIzaSyA5YAKbctMWmj2etXv-KY7MSXDMGaWr0qs" }}
-                    center={center}
-                    defaultZoom={zoom}
-                >
-                    <AnyReactComponent
-                        {...center}
-                        text="🧸"
-                        onClick={onMapClicked}
-                    />
-                    <AnyReactComponent
-                        lat={32.07484324375375}
-                        lng={34.774144954225775}
-                        text="🧸"
-                        onClick={onMapClicked}
-                    />
-                    <AnyReactComponent
-                        lat={32.094571}
-                        lng={34.776700}
-                        text="🧸"
-                        onClick={onMapClicked}
-                    />
-                    <AnyReactComponent
-                        lat={32.07427776577913}
-                        lng={34.80895441202367}
-                        text="🧸"
-                        onClick={onMapClicked}
-                    />
-                    <AnyReactComponent
-                        lat={32.17143850675182}
-                        lng={34.80159361895732}
-                        text="🧸"
-                        onClick={onMapClicked}
-                    />
-                    <AnyReactComponent
-                        lat={32.01764270237933}
-                        lng={34.78037978989864}
-                        text="🧸"
-                        onClick={onMapClicked}
-                    />
-                </GoogleMapReact>
+                <div className="google-map" style={{ height: '50vh', width: '100%' }}>
+                    <GoogleMapReact
+                        bootstrapURLKeys={{ key: "AIzaSyA5YAKbctMWmj2etXv-KY7MSXDMGaWr0qs" }}
+                        center={center}
+                        defaultZoom={zoom}
+                    >
+                        <AnyReactComponent
+                            {...center}
+                            text="🧸"
+                            onClick={onMapClicked}
+                        />
+                        <AnyReactComponent
+                            lat={32.07484324375375}
+                            lng={34.774144954225775}
+                            text="🧸"
+                            onClick={onMapClicked}
+                        />
+                        <AnyReactComponent
+                            lat={32.094571}
+                            lng={34.776700}
+                            text="🧸"
+                            onClick={onMapClicked}
+                        />
+                        <AnyReactComponent
+                            lat={32.07427776577913}
+                            lng={34.80895441202367}
+                            text="🧸"
+                            onClick={onMapClicked}
+                        />
+                        <AnyReactComponent
+                            lat={32.17143850675182}
+                            lng={34.80159361895732}
+                            text="🧸"
+                            onClick={onMapClicked}
+                        />
+                        <AnyReactComponent
+                            lat={32.01764270237933}
+                            lng={34.78037978989864}
+                            text="🧸"
+                            onClick={onMapClicked}
+                        />
+                    </GoogleMapReact>
+                </div>
             </div>
         </section>
     )

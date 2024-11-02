@@ -1,0 +1,29 @@
+.toy-edit h2 {
+    padding: 0.5em;
+}
+
+.toy-edit-inputs {
+    display: grid;
+    gap: 1.5em;
+}
+
+.categories-and-img {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10em;
+    padding: 1em;
+}
+
+.toy-edit-img-container {
+    width: 10em;
+    border-radius: 1em;
+    overflow: hidden;
+}
+
+.actions-edit-form {
+    padding: 1em;
+}
+
+.btn-save-toy {
+    background-color: var(--clr-btn-2);
+}

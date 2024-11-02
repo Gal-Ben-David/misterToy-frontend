@@ -3,6 +3,7 @@ import { toyService } from "../services/toy.service-local.js"
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service.js"
 import { saveToy } from "../store/actions/toy.actions.js"
 import { Link, useNavigate, useParams } from "react-router-dom"
+import DefaultImg from "../assets/img/default-pic.jpg"
 
 import * as React from 'react'
 import Box from '@mui/material/Box'
@@ -96,7 +97,7 @@ export function ToyEdit() {
         <section className="toy-edit">
             <h2>{toyToEdit._id ? 'Edit' : 'Add'} Toy</h2>
 
-            <div>
+            <div className="toy-edit-inputs">
                 <Box
                     component="form"
                     sx={{ '& > :not(style)': { m: 1, width: '25ch' } }}
@@ -133,28 +134,30 @@ export function ToyEdit() {
                     />
                 </Box>
 
-                <div className="filter-form-dropdown-menu">
-                    <h4>Categories</h4>
-                    {labels.map((label) => (
-                        <div key={label} className="dropdown-item">
-                            <input
-                                type="checkbox"
-                                id={label}
-                                value={label}
-                                checked={toyToEdit.labels.includes(label) || false}
-                                onChange={() => toggleLabel(label)}
-                            />
-                            <label className="toy-label-filter" htmlFor={label}>{label}</label>
-                        </div>
-                    ))}
-                </div>
+                <div className="categories-and-img">
+                    <div className="filter-form-left-side">
+                        <h4>Categories</h4>
+                        {labels.map((label) => (
+                            <div key={label} className="checkbox-item">
+                                <input
+                                    type="checkbox"
+                                    id={label}
+                                    value={label}
+                                    checked={toyToEdit.labels.includes(label) || false}
+                                    onChange={() => toggleLabel(label)}
+                                />
+                                <label className="toy-label-filter" htmlFor={label}>{label}</label>
+                            </div>
+                        ))}
+                    </div>
 
-                <div>
-                    <img src={toyToEdit.imgUrl} />
+                    <div className="toy-edit-img-container">
+                        <img src={!toyToEdit._id && DefaultImg} />
+                    </div>
                 </div>
 
                 <div className="actions-edit-form">
-                    <button type="button" className="btn btn-save-toy" onClick={formik.handleSubmit}>{toyToEdit._id ? 'Save' : 'Add'}</button>
+                    <button type="btn button" className="btn btn-save-toy" onClick={formik.handleSubmit}>{toyToEdit._id ? 'Save' : 'Add'}</button>
                     <Link className="btn" to="/">Cancel</Link>
                 </div>
             </div>

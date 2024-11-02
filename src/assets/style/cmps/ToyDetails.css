@@ -33,7 +33,7 @@ ul.toy-labels-details {
 }
 
 .toy-labels-details li {
-    background-color: #e9deda;
+    background-color: var(--clr-btn-2);
     border-radius: 100vh;
     padding: 0.2em 1em;
     font-size: 0.9rem;

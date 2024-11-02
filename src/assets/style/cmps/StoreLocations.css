@@ -1,11 +1,10 @@
-.google-map {
-    border-radius: 1em;
-    overflow: hidden;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+.locations {
+    display: grid;
+    gap: 2em;
 }
 
 .store-locations {
-    display: grid;
+    display: flex;
     grid-template-columns: minmax(20px, 280px) 1fr minmax(20px, 280px);
     justify-items: center;
     gap: 20px;
@@ -21,9 +20,17 @@
 
 .locations-buttons {
     display: flex;
+    flex-direction: column;
     gap: 0.5em;
 }
 
 .btn-location {
     background-color: var(--clr-btn-2);
+    width: 10em;
+}
+
+.google-map {
+    border-radius: 1em;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }

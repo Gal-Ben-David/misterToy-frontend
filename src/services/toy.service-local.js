@@ -68,7 +68,7 @@ function save(toy) {
     }
 }
 
-function getEmptyToy(createdAt = Date.now(), name = '', price = 100, labels = [], inStock = true, imgUrl = 'src/assets/img/default-pic.JPG') {
+function getEmptyToy(createdAt = Date.now(), name = '', price = 100, labels = [], inStock = true, imgUrl = 'src/assets/img/default-pic.jpg') {
     return { createdAt, name, price, labels, inStock, imgUrl }
 }
 
@@ -85,42 +85,42 @@ function _createToys() {
                 123,
                 ['Doll', 'Baby'],
                 true,
-                'src/assets/img/toys/giraffe.JPG'
+                'src/assets/img/toys/giraffe.jpg'
             ),
             _createToy(1112226,
                 'Rabbit',
                 90,
                 ['Doll', 'Baby'],
                 true,
-                'src/assets/img/toys/rabbit.JPG'
+                'src/assets/img/toys/rabbit.jpg'
             ),
             _createToy(1112225,
                 'Rainbow Rings',
                 155,
                 ['Box Game'],
                 true,
-                'src/assets/img/toys/rings.JPG'
+                'src/assets/img/toys/rings.jpg'
             ),
             _createToy(1112224,
                 'Skateboard',
                 200,
                 ['On Wheels'],
                 false,
-                'src/assets/img/toys/Skateboard.JPG'
+                'src/assets/img/toys/Skateboard.jpg'
             ),
             _createToy(1112228,
                 'Wooden Goat Rocker',
                 200,
                 ['Doll'],
                 true,
-                'src/assets/img/toys/wooden-goat-rocker.JPG'
+                'src/assets/img/toys/wooden-goat-rocker.jpg'
             ),
             _createToy(1112234,
                 'Guitar',
                 110,
                 ['Art'],
                 true,
-                'src/assets/img/toys/guitar.JPG'
+                'src/assets/img/toys/guitar.jpg'
             ),
 
             _createToy(1112291,
@@ -128,126 +128,126 @@ function _createToys() {
                 60,
                 ['Box Game'],
                 true,
-                'src/assets/img/toys/chess-blue.JPG'
+                'src/assets/img/toys/chess-blue.jpg'
             ),
             _createToy(1112292,
                 'Piano',
                 220,
                 ['Art'],
                 true,
-                'src/assets/img/toys/piano.JPG'
+                'src/assets/img/toys/piano.jpg'
             ),
             _createToy(1112295,
                 'Mancala',
                 96,
                 ['Box Game'],
                 true,
-                'src/assets/img/toys/mancala.JPG'
+                'src/assets/img/toys/mancala.jpg'
             ),
             _createToy(1112297,
                 'Bear Blue',
                 58,
                 ['Doll', 'Baby'],
                 true,
-                'src/assets/img/toys/bear-blue.JPG'
+                'src/assets/img/toys/bear-blue.jpg'
             ),
             _createToy(1112296,
                 'Shape Sorter',
                 96,
                 ['Box Game'],
                 true,
-                'src/assets/img/toys/shape-sorter.JPG'
+                'src/assets/img/toys/shape-sorter.jpg'
             ),
             _createToy(1112280,
                 'Tic Tac Toe',
                 96,
                 ['Box Game'],
                 true,
-                'src/assets/img/toys/tic-tac-toe.JPG'
+                'src/assets/img/toys/tic-tac-toe.jpg'
             ),
             _createToy(1112283,
                 'Coffee Machine',
                 120,
                 ['Art'],
                 false,
-                'src/assets/img/toys/coffee-machine.JPG'
+                'src/assets/img/toys/coffee-machine.jpg'
             ),
             _createToy(1112285,
                 'Chess - peach',
                 120,
                 ['Art'],
                 false,
-                'src/assets/img/toys/chess-peach.JPG'
+                'src/assets/img/toys/chess-peach.jpg'
             ),
             _createToy(1112285,
                 'Drums',
                 255,
                 ['Art'],
                 true,
-                'src/assets/img/toys/drums.JPG'
+                'src/assets/img/toys/drums.jpg'
             ),
             _createToy(1112245,
                 'Scooter',
                 230,
                 ['On Wheels'],
                 true,
-                'src/assets/img/toys/scooter.JPG'
+                'src/assets/img/toys/scooter.jpg'
             ),
             _createToy(1112290,
                 'Musical-Instruments',
                 100,
                 ['Art'],
                 true,
-                'src/assets/img/toys/musical-instruments.JPG'
+                'src/assets/img/toys/musical-instruments.jpg'
             ),
             _createToy(1112297,
                 'Rabbit Green',
                 85,
                 ['Doll', 'Baby'],
                 true,
-                'src/assets/img/toys/rabbit-green.JPG'
+                'src/assets/img/toys/rabbit-green.jpg'
             ),
             _createToy(1112230,
                 'Rabbit Blue Dress',
                 95,
                 ['Doll', 'Baby'],
                 true,
-                'src/assets/img/toys/rabbit-blue.JPG'
+                'src/assets/img/toys/rabbit-blue.jpg'
             ),
             _createToy(1112233,
                 'Mixer',
                 108,
                 ['Baby'],
                 false,
-                'src/assets/img/toys/mixer.JPG'
+                'src/assets/img/toys/mixer.jpg'
             ),
             _createToy(1112236,
                 'Shaker',
                 110,
                 ['Art'],
                 true,
-                'src/assets/img/toys/shaker.JPG'
+                'src/assets/img/toys/shaker.jpg'
             ),
             _createToy(1112240,
                 'Cake',
                 55,
                 ['Art'],
                 true,
-                'src/assets/img/toys/cake.JPG'
+                'src/assets/img/toys/cake.jpg'
             ),
             _createToy(1112236,
                 'Bicycle',
                 300,
                 ['On Wheels'],
                 true,
-                'src/assets/img/toys/bicycle.JPG'
+                'src/assets/img/toys/bicycle.jpg'
             ),
             _createToy(1112290,
                 'deer',
                 85,
                 ['Art'],
                 true,
-                'src/assets/img/toys/deer.JPG'
+                'src/assets/img/toys/deer.jpg'
             ),
 
         ]
