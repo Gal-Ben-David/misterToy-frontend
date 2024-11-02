@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react"
 import { utilService } from "../services/util.service.js"
 import { toyService } from "../services/toy.service-local.js"
+import { MultipleSelectChip } from "../cmps/Chip.jsx"
 
 export function ToyFilter({ filterBy, onSetFilter }) {
 
@@ -100,6 +101,8 @@ export function ToyFilter({ filterBy, onSetFilter }) {
                             <option value="createdAt">Created At</option>
                         </select>
                     </fieldset>
+
+                    <MultipleSelectChip setFilterByToEdit={setFilterByToEdit} />
                 </div>
             </form>
         </section>
