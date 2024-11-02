@@ -161,7 +161,7 @@ export function ToyEdit() {
                     </div>
                 </div>
 
-                <Box sx={{ minWidth: 120 }}>
+                <Box sx={{ '& > :not(style)': { m: 1, width: '25ch' } }}>
                     <FormControl fullWidth>
                         <InputLabel id="demo-simple-select-label">Stock</InputLabel>
                         <Select
