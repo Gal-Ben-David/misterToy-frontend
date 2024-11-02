@@ -13,7 +13,7 @@ export function AppHeader() {
                 </div>
                 <nav className="app-nav">
                     {/* <NavLink to="/" >Home</NavLink> */}
-                    <NavLink to="/" >Our Toys</NavLink>
+                    <NavLink to="/" >Toys</NavLink>
                     <NavLink to="/about" >About</NavLink>
                     <NavLink to="/dashboard" >Dashboard</NavLink>
                 </nav>

@@ -7,13 +7,32 @@ import { Link, useNavigate, useParams } from "react-router-dom"
 import * as React from 'react'
 import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField'
-
+import { useFormik } from 'formik'
+import * as Yup from 'yup'
 
 export function ToyEdit() {
     const navigate = useNavigate()
     const [toyToEdit, setToyToEdit] = useState(toyService.getEmptyToy())
     const { toyId } = useParams()
     const labels = toyService.getLabels()
+
+    const validationSchema = Yup.object().shape({
+        name: Yup.string()
+            .required('Toy name is required'),
+        price: Yup.number()
+            .required('Price is required')
+            .positive('Price must be a positive number')
+            .typeError('Price must be a number'),
+    });
+
+    const formik = useFormik({
+        initialValues: toyToEdit,
+        validationSchema,
+        enableReinitialize: true,
+        onSubmit: (values) => {
+            onSaveToy(values);
+        },
+    });
 
     useEffect(() => {
         if (toyId) loadToy()
@@ -59,8 +78,8 @@ export function ToyEdit() {
         })
     }
 
-    function onSaveToy(ev) {
-        ev.preventDefault()
+    function onSaveToy() {
+        // ev.preventDefault()
         if (!toyToEdit.price) toyToEdit.price = 100
         saveToy(toyToEdit)
             .then(() => {
@@ -77,24 +96,7 @@ export function ToyEdit() {
         <section className="toy-edit">
             <h2>{toyToEdit._id ? 'Edit' : 'Add'} Toy</h2>
 
-            <form onSubmit={onSaveToy} >
-                {/* <label htmlFor="toy-name">Toy name: </label>
-                <input type="text"
-                    name="name"
-                    id="toy-name"
-                    placeholder="Enter name..."
-                    value={toyToEdit.name}
-                    onChange={handleChange}
-                /> */}
-                {/* <label htmlFor="price">Price: </label>
-                <input type="number"
-                    name="price"
-                    id="price"
-                    placeholder="Enter price"
-                    value={toyToEdit.price}
-                    onChange={handleChange}
-                /> */}
-
+            <div>
                 <Box
                     component="form"
                     sx={{ '& > :not(style)': { m: 1, width: '25ch' } }}
@@ -107,7 +109,11 @@ export function ToyEdit() {
                         variant="outlined"
                         name="name"
                         value={toyToEdit.name}
-                        onChange={handleChange} />
+                        onChange={handleChange}
+                        onBlur={formik.handleBlur}
+                        error={formik.touched.name && Boolean(formik.errors.name)}
+                        helperText={formik.touched.name && formik.errors.name}
+                    />
 
                     <TextField
                         id="outlined-number"
@@ -121,6 +127,9 @@ export function ToyEdit() {
                                 shrink: true,
                             },
                         }}
+                        onBlur={formik.handleBlur}
+                        error={formik.touched.price && Boolean(formik.errors.price)}
+                        helperText={formik.touched.price && formik.errors.price}
                     />
                 </Box>
 
@@ -145,10 +154,27 @@ export function ToyEdit() {
                 </div>
 
                 <div className="actions-edit-form">
-                    <button className="btn btn-save-toy">{toyToEdit._id ? 'Save' : 'Add'}</button>
+                    <button type="button" className="btn btn-save-toy" onClick={formik.handleSubmit}>{toyToEdit._id ? 'Save' : 'Add'}</button>
                     <Link className="btn" to="/">Cancel</Link>
                 </div>
-            </form>
+            </div>
+
+            {/* <label htmlFor="toy-name">Toy name: </label>
+                <input type="text"
+                    name="name"
+                    id="toy-name"
+                    placeholder="Enter name..."
+                    value={toyToEdit.name}
+                    onChange={handleChange}
+                /> */}
+            {/* <label htmlFor="price">Price: </label>
+                <input type="number"
+                    name="price"
+                    id="price"
+                    placeholder="Enter price"
+                    value={toyToEdit.price}
+                    onChange={handleChange}
+                /> */}
         </section>
     )
 

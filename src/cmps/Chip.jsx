@@ -30,7 +30,7 @@ function getStyles(name, personName, theme) {
     }
 }
 
-export function MultipleSelectChip({ setFilterByToEdit, names }) {
+export function MultipleSelectChip({ setFilterByToEdit, names, filterBy }) {
     const theme = useTheme()
     const [personName, setPersonName] = React.useState([])
 
@@ -51,7 +51,7 @@ export function MultipleSelectChip({ setFilterByToEdit, names }) {
                     labelId="demo-multiple-chip-label"
                     id="demo-multiple-chip"
                     multiple
-                    value={personName}
+                    value={filterBy.labels || []}
                     onChange={handleChange}
                     input={<OutlinedInput id="select-multiple-chip" label="Categories" sx={{
                         "& .MuiOutlinedInput-notchedOutline": {

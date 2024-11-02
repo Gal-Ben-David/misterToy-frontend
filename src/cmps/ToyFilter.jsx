@@ -64,7 +64,7 @@ export function ToyFilter({ filterBy, onSetFilter }) {
                                 type="checkbox"
                                 id={label}
                                 value={label}
-                                checked={filterByToEdit.labels.includes(label) || false}
+                                checked={filterBy.labels.includes(label) || false}
                                 onChange={() => toggleLabel(label)}
                             />
                             <label className="toy-label-filter" htmlFor={label}>{label}</label>
@@ -80,7 +80,7 @@ export function ToyFilter({ filterBy, onSetFilter }) {
                             id="toy-name"
                             className="toy-name"
                             placeholder="Find your special toy"
-                            value={filterByToEdit.txt || ''}
+                            value={filterBy.txt || ''}
                             onChange={handleChange}
                         />
                     </label>
@@ -142,7 +142,7 @@ export function ToyFilter({ filterBy, onSetFilter }) {
                         </FormControl>
                     </Box>
 
-                    <MultipleSelectChip setFilterByToEdit={setFilterByToEdit} names={labels} />
+                    <MultipleSelectChip setFilterByToEdit={setFilterByToEdit} names={labels} filterBy={filterBy} />
 
                     {/* <fieldset>
                         <legend>Stock</legend>

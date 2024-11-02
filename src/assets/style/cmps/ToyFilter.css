@@ -50,9 +50,9 @@ label.toy-name {
     border: none;
     background-color: transparent;
     color: #666;
-    font-size: 1.1rem;
+    font-size: 1rem;
 
-    transform: translate(0, -50%);
+    transform: translate(0, -60%);
     cursor: pointer;
 }
 

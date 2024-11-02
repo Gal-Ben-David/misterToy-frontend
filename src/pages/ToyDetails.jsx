@@ -22,11 +22,46 @@ export function ToyDetails() {
     if (!toy) return <div>Loading...</div>
     return (
         <section className="toy-details">
-            <h1>Toy name: {toy.name}</h1>
+            <table className="toy-details-table">
+                <tbody>
+                    <tr>
+                        <td>Toy name</td>
+                        <td>{toy.name}</td>
+                    </tr>
+                    <tr>
+                        <td>Price</td>
+                        <td>${toy.price}</td>
+                    </tr>
+                    <tr>
+                        <td>Inventory</td>
+                        <td>{toy.inStock ? 'Available' : 'Out of stock'}</td>
+                    </tr>
+                    <tr>
+                        <td>Categories</td>
+                        <td >
+                            <ul className="toy-labels-details">
+                                {toy.labels.map((label, i) =>
+                                    <li key={i} className="toy-label">
+                                        {label}
+                                    </li>
+                                )}
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div>
+                <Link className="btn" to={`/toy/edit/${toy._id}`}>Edit</Link> &nbsp;
+                <Link className="btn" to={`/`}>Back</Link>
+            </div>
+
+            {/* <h1>Toy name: {toy.name}</h1>
             <h4>Price: ${toy.price}</h4>
-            <p>🧸</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-            <h4>In Stock: {toy.inStock ? 'Available' : 'Out of stock'}</h4>
+            <div>
+                <img src={toy.imgUrl} />
+            </div>
+            <p className={toy.inStock ? 'available' : 'not-available'}>{toy.inStock ? 'Available' : 'Out of stock'}</p>
             <h4>Categories:</h4>
             <ul>
                 {toy.labels.map((label, i) =>
@@ -34,9 +69,8 @@ export function ToyDetails() {
                         {label}
                     </li>
                 )}
-            </ul>
-            <Link to={`/toy/edit/${toy._id}`}>Edit</Link> &nbsp;
-            <Link to={`/`}>Back</Link>
+            </ul> */}
+
             {/* <p>
                 <Link to="/toy/nJ5L4">Next Toy</Link>
             </p> */}
