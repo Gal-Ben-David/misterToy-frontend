@@ -50,7 +50,7 @@ export function ToyIndex() {
             </section>
 
             <ToyFilter filterBy={filterBy} onSetFilter={onSetFilter} />
-            <Link className='btn' style={{ backgroundColor: 'whitesmoke' }} to="/toy/edit"> Add Toy</Link>
+            <Link className="btn btn-add-toy" style={{ backgroundColor: 'whitesmoke' }} to="/toy/edit"> Add Toy</Link>
 
             {!isLoading
                 ? <ToyList

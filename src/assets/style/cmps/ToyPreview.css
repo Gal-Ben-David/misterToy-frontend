@@ -1,3 +1,12 @@
+.toy-preview {
+    display: grid;
+    gap: 0.2em;
+}
+
+.toy-preview h4 {
+    font-size: 1.15rem;
+}
+
 p.available {
     color: green;
 }

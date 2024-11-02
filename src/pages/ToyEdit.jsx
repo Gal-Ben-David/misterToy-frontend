@@ -8,6 +8,11 @@ import DefaultImg from "../assets/img/default-pic.jpg"
 import * as React from 'react'
 import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField'
+import InputLabel from '@mui/material/InputLabel'
+import MenuItem from '@mui/material/MenuItem'
+import FormControl from '@mui/material/FormControl'
+import Select from '@mui/material/Select'
+
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 
@@ -155,6 +160,33 @@ export function ToyEdit() {
                         <img src={!toyToEdit._id && DefaultImg} />
                     </div>
                 </div>
+
+                <Box sx={{ minWidth: 120 }}>
+                    <FormControl fullWidth>
+                        <InputLabel id="demo-simple-select-label">Stock</InputLabel>
+                        <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            label="Stock"
+                            name="inStock"
+                            className="toy-inStock"
+                            value={toyToEdit.inStock}
+                            onChange={handleChange}
+                            sx={{
+                                borderRadius: 2,
+                                "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                                    borderColor: 'rgb(219, 219, 219)',
+                                },
+                                "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                                    borderColor: 'rgb(219, 219, 219)',
+                                },
+                            }}
+                        >
+                            <MenuItem value={true}>Available</MenuItem>
+                            <MenuItem value={false}>Not Available</MenuItem>
+                        </Select>
+                    </FormControl>
+                </Box>
 
                 <div className="actions-edit-form">
                     <button type="btn button" className="btn btn-save-toy" onClick={formik.handleSubmit}>{toyToEdit._id ? 'Save' : 'Add'}</button>

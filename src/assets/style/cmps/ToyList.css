@@ -1,7 +1,14 @@
+.products {
+    display: grid;
+    gap: 2em;
+    margin-block-start: 2em;
+}
+
+.products h3 {}
+
 ul.toy-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, 200px);
-    justify-content: center;
     gap: 1.7em;
 }
 

@@ -1,18 +1,19 @@
 .locations {
     display: grid;
     gap: 2em;
+    max-width: 900px;
+    margin-block-end: 3em;
 }
 
 .store-locations {
     display: flex;
-    grid-template-columns: minmax(20px, 280px) 1fr minmax(20px, 280px);
     justify-items: center;
     gap: 20px;
 }
 
-.store-locations>* {
+/* .store-locations>* {
     grid-column: 2;
-}
+} */
 
 .store-locations h1 {
     font-size: 2rem;

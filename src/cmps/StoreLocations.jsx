@@ -15,7 +15,7 @@ export function StoreLocations() {
     return (
         // Important! Always set the container height explicitly
         <section className="locations">
-            <h1>Where Magic Happens</h1>
+            <h2>Where Magic Happens</h2>
             <div className="store-locations">
                 <div className="locations-buttons">
                     <button className="btn btn-location" onClick={() => onMapClicked({ lat: 32.068160, lng: 34.822548 })}>Ramat Gan</button>

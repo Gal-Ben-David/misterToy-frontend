@@ -6,7 +6,7 @@ export function ToyList({ toys, onRemoveToy }) {
     if (!toys) return <div>Loading...</div>
 
     return (
-        <section>
+        <section className="products">
             <h3>Our Magics</h3>
             <ul className="toy-list">
                 {toys.map(toy =>

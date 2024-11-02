@@ -9,6 +9,7 @@ import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
 import Select from '@mui/material/Select'
+import Slider from '@mui/material/Slider'
 
 
 export function ToyFilter({ filterBy, onSetFilter }) {
@@ -112,6 +113,17 @@ export function ToyFilter({ filterBy, onSetFilter }) {
                             </Select>
                         </FormControl>
                     </Box>
+
+                    {/* <Box sx={{ width: 300 }}>
+                        <Slider
+                            size="small"
+                            defaultValue={0}
+                            aria-label="Small"
+                            valueLabelDisplay="auto"
+                            onChange={handleChange}
+                            name="price"
+                        />
+                    </Box> */}
 
                     <Box sx={{ minWidth: 120 }}>
                         <FormControl fullWidth>

@@ -1,5 +1,6 @@
 .toy-filter {
     padding-block-start: 2em;
+    padding-block-end: 2em;
     border-radius: 0.5em;
 }
 
@@ -52,10 +53,9 @@ label.toy-name {
     color: #666;
     font-size: 1rem;
 
-    transform: translate(0, -60%);
+    transform: translate(0, -55%);
     cursor: pointer;
 }
-
 
 .filter-form-right-side {
     display: grid;

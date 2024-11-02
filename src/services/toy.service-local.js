@@ -31,6 +31,9 @@ function query(filterBy = {}) {
             if (filterBy.labels.length !== 0) {
                 toys = toys.filter(toy => filterBy.labels.some(label => toy.labels.includes(label)))
             }
+            if (filterBy.price !== 0) {
+                toys = toys.filter(toy => toy.price <= filterBy.price)
+            }
             if (filterBy.inStock !== 'all') {
                 toys = toys.filter(toy => filterBy.inStock === 'available' ? toy.inStock : !toy.inStock)
             }
@@ -73,7 +76,7 @@ function getEmptyToy(createdAt = Date.now(), name = '', price = 100, labels = []
 }
 
 function getDefaultFilter() {
-    return { name: '', price: '', inStock: 'all', labels: [], selector: '' }
+    return { name: '', price: 10000, inStock: 'all', labels: [], selector: '' }
 }
 
 function _createToys() {

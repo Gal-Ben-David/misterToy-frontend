@@ -11,6 +11,7 @@
 /* pages */
 @import './pages/ToyIndex.css';
 @import './pages/Dashboard.css';
+@import './pages/About.css';
 
 /* cmps */
 @import './cmps/ToyList.css';
