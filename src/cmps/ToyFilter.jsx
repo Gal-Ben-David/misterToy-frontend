@@ -80,7 +80,7 @@ export function ToyFilter({ filterBy, onSetFilter }) {
                             id="toy-name"
                             className="toy-name"
                             placeholder="Find your special toy"
-                            value={filterBy.txt || ''}
+                            value={filterByToEdit.txt}
                             onChange={handleChange}
                         />
                     </label>

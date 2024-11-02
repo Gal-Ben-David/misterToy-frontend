@@ -23,7 +23,7 @@ export function ToyEdit() {
             .required('Price is required')
             .positive('Price must be a positive number')
             .typeError('Price must be a number'),
-    });
+    })
 
     const formik = useFormik({
         initialValues: toyToEdit,
