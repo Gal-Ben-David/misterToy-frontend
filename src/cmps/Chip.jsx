@@ -20,7 +20,7 @@ const MenuProps = {
     },
 }
 
-const names = toyService.getLabels()
+// const names = toyService.getLabels()
 
 function getStyles(name, personName, theme) {
     return {
@@ -30,7 +30,7 @@ function getStyles(name, personName, theme) {
     }
 }
 
-export function MultipleSelectChip({ setFilterByToEdit }) {
+export function MultipleSelectChip({ setFilterByToEdit, names }) {
     const theme = useTheme()
     const [personName, setPersonName] = React.useState([])
 
@@ -54,7 +54,7 @@ export function MultipleSelectChip({ setFilterByToEdit }) {
                     value={personName}
                     onChange={handleChange}
                     input={<OutlinedInput id="select-multiple-chip" label="Categories" sx={{
-                        borderRadius: 3, "& .MuiOutlinedInput-notchedOutline": {
+                        "& .MuiOutlinedInput-notchedOutline": {
                             borderColor: 'rgb(219, 219, 219)'
                         }
                     }} />}
@@ -67,6 +67,7 @@ export function MultipleSelectChip({ setFilterByToEdit }) {
                     )}
                     MenuProps={MenuProps}
                     sx={{
+                        borderRadius: 2,
                         "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
                             borderColor: 'rgb(219, 219, 219)',
                         },

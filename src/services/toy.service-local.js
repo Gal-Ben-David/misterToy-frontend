@@ -68,7 +68,7 @@ function save(toy) {
     }
 }
 
-function getEmptyToy(createdAt = Date.now(), name = '', price = 100, labels = [], inStock = true, imgUrl = '') {
+function getEmptyToy(createdAt = Date.now(), name = '', price = 100, labels = [], inStock = true, imgUrl = 'src/assets/img/default-pic.JPG') {
     return { createdAt, name, price, labels, inStock, imgUrl }
 }
 

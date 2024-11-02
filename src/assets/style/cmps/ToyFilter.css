@@ -7,10 +7,16 @@
     grid-column: 2;
 }
 
+.filter-form {
+    display: flex;
+    gap: 6em;
+}
+
 .toy-filter input.toy-name {
     width: 100%;
     height: 2em;
     padding: 0 2.7em;
+    margin-block-end: 0.4em;
 
     border: none;
     border-radius: 10em;
@@ -50,22 +56,24 @@ label.toy-name {
     cursor: pointer;
 }
 
-.filter-form {
-    display: flex;
-    gap: 6em;
-}
 
-.filter-form-left-side {
+.filter-form-right-side {
     display: grid;
     gap: 1em;
     align-items: center;
+}
+
+.filter-form-left-side h4 {
+    margin-block-end: 1em;
 }
 
 .toy-label-filter {
     margin-inline-start: 0.6em;
 }
 
-select.toy-inStock,
+
+
+/* select.toy-inStock,
 select.tot-sort {
     width: 100%;
     border: none;
@@ -74,8 +82,9 @@ select.tot-sort {
 select.toy-inStock:focus,
 select.tot-sort:focus {
     outline: none;
-}
+} */
 
+/* 
 fieldset {
     border-radius: 0.5em;
     border: 1px solid rgb(219, 219, 219);
@@ -85,5 +94,4 @@ fieldset {
 legend {
     font-size: 0.9rem;
     padding: 0 0.5em;
-
-}
+} */
