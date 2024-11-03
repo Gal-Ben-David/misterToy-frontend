@@ -1,0 +1,23 @@
+.header-container {
+    display: flex;
+    justify-content: space-between;
+
+    padding: 1em;
+    /* box-shadow: 0 0px 8px rgba(0, 0, 0, 0.2); */
+
+    .app-nav {
+        display: flex;
+        gap: 1em;
+        align-items: center;
+    }
+
+    .logo {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+    }
+
+    .img-teddy-bear-logo {
+        height: 4em;
+    }
+}

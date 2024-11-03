@@ -189,7 +189,7 @@ export function ToyEdit() {
                 </Box>
 
                 <div className="actions-edit-form">
-                    <button type="btn button" className="btn btn-save-toy" onClick={formik.handleSubmit}>{toyToEdit._id ? 'Save' : 'Add'}</button>
+                    <button type="btn button" className="btn btn-light btn-save-toy" onClick={formik.handleSubmit}>{toyToEdit._id ? 'Save' : 'Add'}</button>
                     <Link className="btn" to="/">Cancel</Link>
                 </div>
             </div>

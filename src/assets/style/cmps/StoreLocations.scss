@@ -1,0 +1,28 @@
+.locations {
+    display: grid;
+    gap: 2em;
+    max-width: 900px;
+    margin-block-end: 3em;
+
+    .store-locations {
+        display: flex;
+        justify-items: center;
+        gap: 20px;
+    }
+
+    .locations-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
+    }
+
+    .btn-location {
+        width: 10em;
+    }
+
+    .google-map {
+        border-radius: 1em;
+        overflow: hidden;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    }
+}

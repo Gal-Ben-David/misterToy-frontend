@@ -1,0 +1,140 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Mukta-Regular';
+    color: $clr-font-1;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style-type: none;
+}
+
+img,
+iframe {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.btn {
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: 0.5em;
+    font-family: inherit;
+    cursor: pointer;
+
+    &-dark {
+        @include btn($type: dark);
+    }
+
+    &-light {
+        @include btn($type: light);
+    }
+}
+
+p {
+    .part-of-story & {
+        max-width: 30em;
+    }
+
+    .introduction & {
+        font-size: 1.2rem;
+        width: 20em;
+    }
+
+    .toy-list & {
+        margin: 0;
+    }
+
+    &.available {
+        color: green;
+    }
+
+    &.not-available {
+        color: red;
+    }
+}
+
+h1 {
+    .logo & {
+        font-size: 1.5rem;
+    }
+
+    .store-locations & {
+        font-size: 2rem;
+    }
+
+    .introduction & {
+        font-family: 'Mukta-Medium';
+        font-size: 1.8rem;
+        margin-block-end: 0.5em;
+    }
+}
+
+h2 {
+    .toy-edit & {
+        padding: 0.5em;
+    }
+
+}
+
+h4 {
+    .part-of-story & {
+        margin-block-end: 0.4em;
+    }
+
+    .toy-preview & {
+        font-size: 1.15rem;
+    }
+
+    .charts & {
+        margin-block-end: 1em;
+        font-size: 1.15rem;
+    }
+}
+
+.loader {
+    height: 4px;
+    width: 130px;
+    --c: no-repeat linear-gradient(#6100ee 0 0);
+    background: var(--c), var(--c), #d7b8fc;
+    background-size: 60% 100%;
+    animation: l16 3s infinite;
+}
+
+@keyframes l16 {
+    0% {
+        background-position: -150% 0, -150% 0
+    }
+
+    66% {
+        background-position: 250% 0, -150% 0
+    }
+
+    100% {
+        background-position: 250% 0, 250% 0
+    }
+}

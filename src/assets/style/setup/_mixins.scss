@@ -1,0 +1,18 @@
+@mixin btn ($type: regular) {
+
+    @if $type ==dark {
+        background-color: $clr-btn-1;
+
+        &:hover {
+            background-color: darken($clr-btn-1, 8%);
+        }
+    }
+
+    @else if $type ==light {
+        background-color: $clr-btn-2;
+
+        &:hover {
+            background-color: darken($clr-btn-2, 8%);
+        }
+    }
+}

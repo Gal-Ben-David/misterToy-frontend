@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 export function AppHeader() {
 
     return (
-        <header className="app-header">
+        <header className="app-header full">
             <section className="header-container">
                 <div className='logo'>
                     <div className='img-teddy-bear-logo'>

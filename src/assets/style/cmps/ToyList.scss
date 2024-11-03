@@ -1,0 +1,36 @@
+.products {
+    display: grid;
+    gap: 2em;
+    margin-block-start: 2em;
+
+    ul.toy-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, 200px);
+        gap: 1.7em;
+
+        & li {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            overflow: hidden;
+            padding: 0 0 1.5em;
+
+            border-radius: 0.5em;
+            /* background-color: var(--clr-bg-1); */
+
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: 0.3s ease-in-out;
+
+            &:hover {
+                transform: scale(1.02);
+                box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+            }
+
+            .toy-img {
+                height: 20em;
+            }
+        }
+    }
+}

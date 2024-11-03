@@ -1,0 +1,13 @@
+.main-layout {
+    display: grid;
+    grid-template-columns: minmax(20px, 280px) 1fr minmax(20px, 280px);
+    justify-content: stretch;
+
+    >*.full {
+        grid-column: 1/-1;
+    }
+
+    >* {
+        grid-column: 2;
+    }
+}

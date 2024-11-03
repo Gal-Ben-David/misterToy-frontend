@@ -1,8 +1,6 @@
 // const Router = ReactRouterDOM.BrowserRouter
 // const { Route, Routes } = ReactRouterDOM
 // const { Provider } = ReactRedux
-import '../src/assets/style/main.css'
-
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import { Provider } from 'react-redux'
 
@@ -27,7 +25,7 @@ export default function App() {
       <Router>
         <section className="app">
           <AppHeader />
-          <main className='main-layout'>
+          <main className="main-layout">
             <Routes>
               {/* <Route element={<HomePage />} path="/" /> */}
               <Route element={<About />} path="/about" />

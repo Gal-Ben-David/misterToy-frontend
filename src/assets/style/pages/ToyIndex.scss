@@ -1,0 +1,46 @@
+.main-toys {
+    display: grid;
+    grid-template-columns: minmax(20px, 280px) 1fr minmax(20px, 280px);
+
+    grid-column: 1/-1;
+
+    >* {
+        grid-column: 2;
+    }
+
+    .introduction {
+        grid-column: 1/-1;
+        justify-self: stretch;
+
+        display: grid;
+        grid-template-columns: minmax(20px, 280px) 1fr minmax(20px, 280px);
+        background-color: $clr-bg-3;
+
+        padding: 2em 0;
+
+        >* {
+            grid-column: 2;
+        }
+
+        .introduction-content {
+            display: grid;
+            grid-template-columns: minmax(500px, 600px) 1fr;
+        }
+
+        .description {
+            align-self: center;
+        }
+
+        .introduction-img {
+            width: 20em;
+
+            & img {
+                object-fit: contain;
+            }
+        }
+    }
+
+    .btn-add-toy {
+        justify-self: start;
+    }
+}

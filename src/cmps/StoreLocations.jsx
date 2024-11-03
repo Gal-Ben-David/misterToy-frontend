@@ -18,12 +18,12 @@ export function StoreLocations() {
             <h2>Where Magic Happens</h2>
             <div className="store-locations">
                 <div className="locations-buttons">
-                    <button className="btn btn-location" onClick={() => onMapClicked({ lat: 32.068160, lng: 34.822548 })}>Ramat Gan</button>
-                    <button className="btn btn-location" onClick={() => onMapClicked({ lat: 32.07484324375375, lng: 34.774144954225775 })}>Bograshov, Tel Aviv</button>
-                    <button className="btn btn-location" onClick={() => onMapClicked({ lat: 32.094571, lng: 34.776700 })}>Dizengoff, Tel Aviv</button>
-                    <button className="btn btn-location" onClick={() => onMapClicked({ lat: 32.07427776577913, lng: 34.80895441202367 })}>Giv'atayim</button>
-                    <button className="btn btn-location" onClick={() => onMapClicked({ lat: 32.17143850675182, lng: 34.80159361895732 })}>Herzeliya</button>
-                    <button className="btn btn-location" onClick={() => onMapClicked({ lat: 32.01764270237933, lng: 34.78037978989864 })}>Holon</button>
+                    <button className="btn btn-light btn-location" onClick={() => onMapClicked({ lat: 32.068160, lng: 34.822548 })}>Ramat Gan</button>
+                    <button className="btn btn-light btn-location" onClick={() => onMapClicked({ lat: 32.07484324375375, lng: 34.774144954225775 })}>Bograshov, Tel Aviv</button>
+                    <button className="btn btn-light btn-location" onClick={() => onMapClicked({ lat: 32.094571, lng: 34.776700 })}>Dizengoff, Tel Aviv</button>
+                    <button className="btn btn-light btn-location" onClick={() => onMapClicked({ lat: 32.07427776577913, lng: 34.80895441202367 })}>Giv'atayim</button>
+                    <button className="btn btn-light btn-location" onClick={() => onMapClicked({ lat: 32.17143850675182, lng: 34.80159361895732 })}>Herzeliya</button>
+                    <button className="btn btn-light btn-location" onClick={() => onMapClicked({ lat: 32.01764270237933, lng: 34.78037978989864 })}>Holon</button>
                 </div>
 
                 <div className="google-map" style={{ height: '50vh', width: '100%' }}>

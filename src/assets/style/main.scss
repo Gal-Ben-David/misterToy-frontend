@@ -1,0 +1,26 @@
+/* fonts */
+@import './setup/fonts';
+
+/* setup */
+@import './setup/vars';
+@import 'setup/mixins';
+@import 'setup/functions';
+
+
+/* basis */
+@import 'basics/layout';
+@import 'basics/base';
+
+/* pages */
+@import 'pages/ToyIndex';
+@import 'pages/Dashboard';
+@import 'pages/About';
+
+/* cmps */
+@import 'cmps/ToyList';
+@import 'cmps/ToyFilter';
+@import 'cmps/AppHeader';
+@import 'cmps/ToyPreview';
+@import 'cmps/StoreLocations';
+@import 'cmps/ToyDetails';
+@import 'cmps/ToyEdit';
