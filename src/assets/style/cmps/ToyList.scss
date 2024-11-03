@@ -32,5 +32,9 @@
                 height: 20em;
             }
         }
+
+        @include for-mobile-layout {
+            justify-content: center;
+        }
     }
 }

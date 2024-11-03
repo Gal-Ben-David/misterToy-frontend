@@ -16,3 +16,27 @@
         }
     }
 }
+
+@mixin for-mobile-layout {
+    @media (max-width:$break-narrow-1) {
+        @content;
+    }
+}
+
+@mixin for-narrow-layout {
+    @media (min-width: $break-narrow-2) {
+        @content;
+    }
+}
+
+@mixin for-normal-layout {
+    @media (min-width: $break-narrow-3) {
+        @content;
+    }
+}
+
+@mixin for-wide-layout {
+    @media (min-width: $break-normal) {
+        @content;
+    }
+}

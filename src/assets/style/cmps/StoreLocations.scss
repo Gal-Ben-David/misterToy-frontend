@@ -8,17 +8,36 @@
         display: flex;
         justify-items: center;
         gap: 20px;
+
+        @include for-mobile-layout {
+            flex-direction: column-reverse;
+        }
     }
 
     .locations-buttons {
         display: flex;
-        flex-direction: column;
         gap: 0.5em;
+
+        @include for-mobile-layout {
+            flex-wrap: wrap;
+
+            .btn-location {
+                width: 6em;
+                font-size: 0.9rem;
+            }
+        }
+
+        @include for-narrow-layout {
+            flex-direction: column;
+
+            .btn-location {
+                width: 10em;
+                font-size: 1rem;
+            }
+        }
     }
 
-    .btn-location {
-        width: 10em;
-    }
+
 
     .google-map {
         border-radius: 1em;

@@ -9,7 +9,15 @@
 
     .filter-form {
         display: flex;
-        gap: 6em;
+
+        @include for-mobile-layout {
+            flex-direction: column-reverse;
+            gap: 3em;
+        }
+
+        @include for-narrow-layout {
+            gap: 6em;
+        }
     }
 
     & input.toy-name {
@@ -54,6 +62,7 @@
             border-radius: 50%;
         }
     }
+
 }
 
 .filter-form-right-side {

@@ -2,6 +2,7 @@
     display: grid;
     gap: 2em;
     justify-items: center;
+    padding-block-start: 2em;
 
     .doughnut-stats {
         width: 20em;
@@ -9,7 +10,23 @@
 
     .charts {
         display: flex;
-        gap: 10em;
         text-align: center;
+
+        @include for-mobile-layout {
+            flex-direction: column;
+            gap: 5em;
+            margin-block-end: 2em;
+        }
+
+        @include for-narrow-layout {
+            flex-direction: column;
+            gap: 5em;
+
+        }
+
+        @include for-normal-layout {
+            flex-direction: row;
+            gap: 10em;
+        }
     }
 }

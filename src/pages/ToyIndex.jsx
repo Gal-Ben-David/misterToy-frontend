@@ -35,8 +35,8 @@ export function ToyIndex() {
     }
 
     return (
-        <main className="main-toys">
-            <section className="introduction">
+        <main className="main-toys full">
+            <section className="introduction full">
                 <div className="introduction-content">
                     <div className="description">
                         <h1>The Magic of Timeless Toys ✨</h1>

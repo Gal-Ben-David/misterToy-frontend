@@ -1,5 +1,15 @@
 .about {
+    display: grid;
     justify-self: center;
+    padding-block-start: 2em;
+
+    @include for-mobile-layout {
+        gap: 3em;
+    }
+
+    @include for-narrow-layout {
+        gap: 5em;
+    }
 
     .description-story {
         display: grid;
@@ -7,9 +17,17 @@
 
         .part-of-story {
             display: grid;
-            grid-template-columns: minmax(200px, 550px) 250px;
-            gap: 5em;
+
+            @include for-mobile-layout {
+                gap: 1em;
+                grid-template-columns: 260px;
+                text-align: justify;
+            }
+
+            @include for-narrow-layout {
+                gap: 1em;
+                grid-template-columns: minmax(200px, 550px) minmax(100px, 250px);
+            }
         }
     }
-
 }

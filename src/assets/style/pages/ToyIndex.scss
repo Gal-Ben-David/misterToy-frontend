@@ -2,16 +2,15 @@
     display: grid;
     grid-template-columns: minmax(20px, 280px) 1fr minmax(20px, 280px);
 
-    grid-column: 1/-1;
+    >*.full {
+        grid-column: 1/-1;
+    }
 
     >* {
         grid-column: 2;
     }
 
     .introduction {
-        grid-column: 1/-1;
-        justify-self: stretch;
-
         display: grid;
         grid-template-columns: minmax(20px, 280px) 1fr minmax(20px, 280px);
         background-color: $clr-bg-3;
@@ -23,8 +22,16 @@
         }
 
         .introduction-content {
-            display: grid;
-            grid-template-columns: minmax(500px, 600px) 1fr;
+            @include for-mobile-layout {
+                display: flex;
+                flex-direction: column;
+                gap: 3em;
+            }
+
+            @include for-normal-layout {
+                display: grid;
+                grid-template-columns: minmax(auto, 600px) 1fr;
+            }
         }
 
         .description {
@@ -32,12 +39,21 @@
         }
 
         .introduction-img {
-            width: 20em;
+
 
             & img {
                 object-fit: contain;
             }
+
+            @include for-mobile-layout {
+                width: 15em;
+            }
+
+            @include for-narrow-layout {
+                width: 20em;
+            }
         }
+
     }
 
     .btn-add-toy {

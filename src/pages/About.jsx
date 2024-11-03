@@ -45,14 +45,6 @@ export function About() {
                         <img src={workFront} />
                     </div>
                 </div>
-
-                <div>
-                    <div>
-                        <img />
-                    </div>
-
-                </div>
-
             </section>
 
             <StoreLocations />

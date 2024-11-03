@@ -8,6 +8,10 @@ body {
     color: $clr-font-1;
 }
 
+.app {
+    display: grid;
+}
+
 h1,
 h2,
 h3,
@@ -61,8 +65,16 @@ p {
     }
 
     .introduction & {
-        font-size: 1.2rem;
-        width: 20em;
+
+        max-width: 20em;
+
+        @include for-mobile-layout {
+            font-size: 1rem;
+        }
+
+        @include for-narrow-layout {
+            font-size: 1.2rem;
+        }
     }
 
     .toy-list & {
@@ -89,8 +101,15 @@ h1 {
 
     .introduction & {
         font-family: 'Mukta-Medium';
-        font-size: 1.8rem;
         margin-block-end: 0.5em;
+
+        @include for-mobile-layout {
+            font-size: 1.5rem;
+        }
+
+        @include for-narrow-layout {
+            font-size: 1.8rem;
+        }
     }
 }
 
