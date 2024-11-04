@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react"
-import { toyService } from "../services/toy.service-local.js"
+import { toyService } from "../services/toy.service.js"
 
 import { Chart as ChartJS, CategoryScale, ArcElement, Tooltip, Legend, BarElement, LinearScale } from 'chart.js'
 import { Pie } from 'react-chartjs-2'

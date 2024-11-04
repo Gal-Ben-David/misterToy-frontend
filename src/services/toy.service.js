@@ -4,60 +4,101 @@ import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
 import { httpService } from './http.service.js'
 
-const STORAGE_KEY = 'carDB'
-const BASE_URL = 'car/'
+const STORAGE_KEY = 'toyDB'
+const BASE_URL = 'toy/'
+const LABELS = ['On Wheels', 'Box Game', 'Art', 'Baby', 'Doll', 'Puzzle',
+    'Outdoor', 'Battery Powered']
 
-export const carService = {
+export const toyService = {
     query,
     getById,
     save,
     remove,
-    getEmptyCar,
+    getEmptyToy,
     getDefaultFilter,
-    getRandomCar
+    getLabelsStats,
+    getStockStatus,
+    getLabels
 }
-
 
 function query(filterBy = {}) {
     // return axios.get(BASE_URL, { params: filterBy }).then(res => res.data)
     return httpService.get(BASE_URL, filterBy)
 }
 
-function getById(carId) {
-    // return axios.get(BASE_URL + carId).then(res => res.data)
-    return httpService.get(BASE_URL + carId)
+function getById(toyId) {
+    // return axios.get(BASE_URL + toyId).then(res => res.data)
+    return httpService.get(BASE_URL + toyId)
 
 }
-function remove(carId) {
-    // return axios.delete(BASE_URL + carId).then(res => res.data) // api/car/c102/remove
-    return httpService.delete(BASE_URL + carId)
+function remove(toyId) {
+    // return axios.delete(BASE_URL + toyId).then(res => res.data) // api/toy/c102/remove
+    return httpService.delete(BASE_URL + toyId)
 
 }
 
-function save(car) {
-    if (car._id) {
-        return httpService.put(BASE_URL + car._id, car)
+function save(toy) {
+    if (toy._id) {
+        return httpService.put(BASE_URL + toy._id, toy)
     } else {
-        return httpService.post(BASE_URL, car)
+        return httpService.post(BASE_URL, toy)
     }
 }
-function getEmptyCar() {
+function getEmptyToy() {
     return {
-        vendor: '',
-        price: '',
-        speed: '',
+        createdAt: Date.now(),
+        name: '',
+        price: 100,
+        labels: [],
+        inStock: true,
+        imgUrl: 'src/assets/img/default-pic.jpg'
     }
 }
-
-function getRandomCar() {
-    return {
-        vendor: 'Susita-' + (Date.now() % 1000),
-        price: utilService.getRandomIntInclusive(1000, 9000),
-        speed: utilService.getRandomIntInclusive(90, 200),
-    }
-}
-
 
 function getDefaultFilter() {
-    return { txt: '', maxPrice: '', minSpeed: '' }
+    return { name: '', price: 10000, inStock: 'all', labels: [], selector: '' }
 }
+
+function getLabels() {
+    return LABELS
+}
+
+function getLabelsStats() {
+    return storageService.query(STORAGE_KEY)
+        .then(toys => {
+            const labelsMap = _getLabelsMap(toys)
+            const totalInStockToys = toys.filter(toy => toy.inStock).length
+            const data = Object.keys(labelsMap)
+                .map(label =>
+                ({
+                    title: label,
+                    value: Math.round((labelsMap[label] / totalInStockToys) * 100)
+                }))
+            console.log('data:', data)
+            return data
+        })
+}
+
+function getStockStatus() {
+    return storageService.query(STORAGE_KEY)
+        .then(toys => {
+            const stockStatus = toys.reduce((acc, toy) => {
+                if (toy.inStock) acc.available++
+                else acc.notAvailable++
+                return acc
+            }, { available: 0, notAvailable: 0 })
+            return stockStatus
+        })
+}
+
+function _getLabelsMap(toys) {
+    const toyLabels = toys.filter(toy => toy.inStock).map(toy => toy.labels)
+    const labelsMap = toyLabels.flat().reduce((map, label) => {
+        if (!map[label]) map[label] = 0
+        map[label]++
+        return map
+    }, {})
+    console.log('labelsMap', labelsMap)
+    return labelsMap
+}
+
