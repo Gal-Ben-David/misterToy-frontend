@@ -1,0 +1,15 @@
+.login-page {
+    display: grid;
+    gap: 2em;
+    justify-content: center;
+
+    .login-form {
+        display: grid;
+        gap: 1em;
+        justify-content: center;
+
+        // .btn-login {
+        //     justify-self: center;
+        // }
+    }
+}

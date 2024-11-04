@@ -1,10 +1,18 @@
 import { NavLink } from 'react-router-dom'
-
 import { useRef } from "react"
+import { useDispatch, useSelector } from 'react-redux'
 
 export function AppHeader() {
 
     const menu = useRef()
+    const loggedinUser = useSelector(storeState => storeState.userModule.loggedInUser)
+
+    function onLogout() {
+        logout()
+            .catch((err) => {
+                showErrorMsg('OOPs try again')
+            })
+    }
 
     function onToggleMenu() {
         menu.current.classList.toggle('active')
@@ -25,6 +33,8 @@ export function AppHeader() {
                     <NavLink to="/" >Toys</NavLink>
                     <NavLink to="/about" >About</NavLink>
                     <NavLink to="/dashboard" >Dashboard</NavLink>
+                    {console.log('loggedInUser', loggedinUser)}
+                    <NavLink to="/login" >{loggedinUser ? 'Log out' : 'Log in'}</NavLink>
                 </nav>
             </section>
         </header>

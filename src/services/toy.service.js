@@ -38,6 +38,7 @@ function remove(toyId) {
 }
 
 function save(toy) {
+    if (!userService.getLoggedinUser()) return Promise.reject('User is not logged in')
     if (toy._id) {
         return httpService.put(BASE_URL + toy._id, toy)
     } else {

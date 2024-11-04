@@ -157,7 +157,7 @@ export function ToyEdit() {
                     </div>
 
                     <div className="toy-edit-img-container">
-                        <img src={!toyToEdit._id && DefaultImg} />
+                        <img src={!toyToEdit._id ? DefaultImg : toyToEdit.imgUrl} />
                     </div>
                 </div>
 
