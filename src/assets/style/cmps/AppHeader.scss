@@ -1,14 +1,42 @@
 .header-container {
     display: flex;
+    position: relative;
     justify-content: space-between;
     width: 100%;
     padding: 1em;
     /* box-shadow: 0 0px 8px rgba(0, 0, 0, 0.2); */
 
+    .hamburger {
+        @include for-mobile-layout {
+            font-size: 26px;
+            align-self: center;
+        }
+
+        @include for-narrow-layout {
+            display: none;
+        }
+    }
+
     .app-nav {
         display: flex;
         gap: 1em;
         align-items: center;
+
+        @include for-mobile-layout {
+            position: absolute;
+            flex-direction: column;
+            top: 100%;
+            right: 0;
+
+            height: 100vh;
+            padding: 10px;
+
+            transform: translateX(100%);
+
+            background-color: white;
+            box-shadow: -8px 5px 13px rgb(0 0 0 / 20%);
+            transition: 0.5s ease;
+        }
     }
 
     .logo {
@@ -23,6 +51,11 @@
         & img {
             object-fit: contain;
         }
+    }
+
+    .active {
+        transform: translateX(0);
+        z-index: 111;
     }
 
 }

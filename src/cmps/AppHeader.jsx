@@ -1,6 +1,14 @@
 import { NavLink } from 'react-router-dom'
 
+import { useRef } from "react"
+
 export function AppHeader() {
+
+    const menu = useRef()
+
+    function onToggleMenu() {
+        menu.current.classList.toggle('active')
+    }
 
     return (
         <header className="app-header full">
@@ -11,7 +19,8 @@ export function AppHeader() {
                     </div>
                     <h1>MisterToy</h1>
                 </div>
-                <nav className="app-nav">
+                <i className="fa-solid fa-ellipsis hamburger" onClick={onToggleMenu}></i>
+                <nav className="app-nav" ref={menu}>
                     {/* <NavLink to="/" >Home</NavLink> */}
                     <NavLink to="/" >Toys</NavLink>
                     <NavLink to="/about" >About</NavLink>
