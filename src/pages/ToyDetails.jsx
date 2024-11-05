@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react"
 import { toyService } from "../services/toy.service"
-import { Link, useParams } from "react-router-dom"
+import { Form, Link, useParams } from "react-router-dom"
+import { saveToy } from "../store/actions/toy.actions.js"
 
 export function ToyDetails() {
+    const [msg, setMsg] = useState('')
+    const [isAddedMsg, setIsAddedMsg] = useState(false)
     const [toy, setToy] = useState(null)
     const { toyId } = useParams()
 
@@ -17,6 +20,31 @@ export function ToyDetails() {
                 console.log('Had issues in toy details', err)
                 navigate('/')
             })
+    }
+
+    function handleChange({ target }) {
+        const field = target.name
+        let value = target.value
+        setMsg(value)
+    }
+
+    async function onSaveMsg(ev) {
+        ev.preventDefault
+        console.log(msg)
+        const savedMsg = await toyService.addMsg(toy._id, msg)
+        setToy((prevToy) => ({
+            ...prevToy,
+            msgs: [...(prevToy.msgs || []), savedMsg],
+        }))
+        setMsg('')
+    }
+
+    async function onRemoveMsg(msgId) {
+        await toyService.removeMsg(toy._id, msgId)
+        setToy((prevToy) => ({
+            ...prevToy,
+            msgs: prevToy.msgs.filter((msg) => msgId !== msg.id),
+        }))
     }
 
     if (!toy) return <div>Loading...</div>
@@ -55,6 +83,36 @@ export function ToyDetails() {
                 <Link className="btn" to={`/toy/edit/${toy._id}`}>Edit</Link> &nbsp;
                 <Link className="btn" to={`/`}>Back</Link>
             </div>
+
+            <hr />
+
+            <form onSubmit={onSaveMsg}>
+                <h4>Messages</h4>
+                <button type="button" className="btn btn-light" onClick={() => setIsAddedMsg(true)}>Add message</button>
+                {isAddedMsg &&
+                    <>
+                        <input
+                            type="text"
+                            name="msgs"
+                            value={msg}
+                            placeholder="Type here..."
+                            onChange={handleChange}
+                            required
+                            autoFocus
+                        />
+                        <button disabled={!msg} className="btn btn-save-msg">Save</button>
+                        <button type="button" className="btn" onClick={() => setIsAddedMsg(false)}>Cancel</button>
+                    </>
+                }
+            </form>
+
+            <ul className="toy-msgs-details">
+                {toy.msgs && toy.msgs.map(msg =>
+                    <li key={msg.id} className="toy-msg">
+                        <span>{msg.txt}</span><span>author:{msg.by?.fullname || ''}</span><button onClick={() => onRemoveMsg(msg.id)} className="btn"><i className="fa-solid fa-xmark"></i></button>
+                    </li>
+                )}
+            </ul>
 
             {/* <h1>Toy name: {toy.name}</h1>
             <h4>Price: ${toy.price}</h4>

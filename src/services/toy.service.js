@@ -14,6 +14,8 @@ export const toyService = {
     getById,
     save,
     remove,
+    addMsg,
+    removeMsg,
     getEmptyToy,
     getDefaultFilter,
     getLabelsStats,
@@ -29,12 +31,11 @@ function query(filterBy = {}) {
 function getById(toyId) {
     // return axios.get(BASE_URL + toyId).then(res => res.data)
     return httpService.get(BASE_URL + toyId)
-
 }
+
 function remove(toyId) {
     // return axios.delete(BASE_URL + toyId).then(res => res.data) // api/toy/c102/remove
     return httpService.delete(BASE_URL + toyId)
-
 }
 
 function save(toy) {
@@ -45,6 +46,19 @@ function save(toy) {
         return httpService.post(BASE_URL, toy)
     }
 }
+
+async function addMsg(toyId, msg) {
+    if (!userService.getLoggedinUser()) return Promise.reject('User is not logged in')
+    const savedMsg = await httpService.post(BASE_URL + toyId + '/msg', { txt: msg })
+    return savedMsg
+}
+
+async function removeMsg(toyId, msgId) {
+    if (!userService.getLoggedinUser()) return Promise.reject('User is not logged in')
+    const msgCount = await httpService.delete(BASE_URL + toyId + '/msg/' + msgId)
+    return msgCount
+}
+
 function getEmptyToy() {
     return {
         createdAt: Date.now(),

@@ -14,7 +14,7 @@ const initialState = {
     toys: [],
     isLoading: false,
     filterBy: toyService.getDefaultFilter(),
-    lastToys: []
+    lastToys: [],
 }
 
 export function toyReducer(state = initialState, action = {}) {
