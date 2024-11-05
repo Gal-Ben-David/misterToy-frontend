@@ -44,13 +44,15 @@ export function ToyEdit() {
         if (toyId) loadToy()
     }, [])
 
-    function loadToy() {
-        toyService.getById(toyId)
-            .then(toy => setToyToEdit(toy))
-            .catch(err => {
-                console.log('Had issues in toy edit', err)
-                navigate('/')
-            })
+    async function loadToy() {
+        try {
+            const toy = await toyService.getById(toyId)
+            setToyToEdit(toy)
+        } catch (err) {
+            showErrorMsg('Cannot load toy')
+            console.log('Had issues in toy edit', err)
+            navigate('/')
+        }
     }
 
     function handleChange({ target }) {
@@ -84,18 +86,18 @@ export function ToyEdit() {
         })
     }
 
-    function onSaveToy() {
+    async function onSaveToy() {
         // ev.preventDefault()
         if (!toyToEdit.price) toyToEdit.price = 100
-        saveToy(toyToEdit)
-            .then(() => {
-                showSuccessMsg('Toy Saved!')
-                navigate('/')
-            })
-            .catch(err => {
-                console.log('Had issues in toy details', err)
-                showErrorMsg('Had issues in toy details')
-            })
+
+        try {
+            const savedToy = await saveToy(toyToEdit)
+            showSuccessMsg('Toy Saved!')
+            navigate('/')
+        } catch (err) {
+            console.log('Had issues in toy details', err)
+            showErrorMsg('Had issues in toy details')
+        }
     }
 
     return (

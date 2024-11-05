@@ -78,32 +78,39 @@ function getLabels() {
     return LABELS
 }
 
-function getLabelsStats() {
-    return storageService.query(STORAGE_KEY)
-        .then(toys => {
-            const labelsMap = _getLabelsMap(toys)
-            const totalInStockToys = toys.filter(toy => toy.inStock).length
-            const data = Object.keys(labelsMap)
-                .map(label =>
-                ({
-                    title: label,
-                    value: Math.round((labelsMap[label] / totalInStockToys) * 100)
-                }))
-            console.log('data:', data)
-            return data
-        })
+async function getLabelsStats() {
+    try {
+        const toys = await query()
+        const labelsMap = _getLabelsMap(toys)
+        const totalInStockToys = toys.filter(toy => toy.inStock).length
+        const data = Object.keys(labelsMap)
+            .map(label =>
+            ({
+                title: label,
+                value: Math.round((labelsMap[label] / totalInStockToys) * 100)
+            }))
+        console.log('data:', data)
+        return data
+
+    } catch (err) {
+        console.log('Cannot set data', err)
+    }
 }
 
-function getStockStatus() {
-    return storageService.query(STORAGE_KEY)
-        .then(toys => {
-            const stockStatus = toys.reduce((acc, toy) => {
-                if (toy.inStock) acc.available++
-                else acc.notAvailable++
-                return acc
-            }, { available: 0, notAvailable: 0 })
-            return stockStatus
-        })
+async function getStockStatus() {
+    try {
+        const toys = await query()
+        const stockStatus = toys.reduce((acc, toy) => {
+            if (toy.inStock) acc.available++
+            else acc.notAvailable++
+            return acc
+        }, { available: 0, notAvailable: 0 })
+
+        return stockStatus
+
+    } catch (err) {
+        console.log('Cannot set data', err)
+    }
 }
 
 function _getLabelsMap(toys) {
@@ -116,4 +123,20 @@ function _getLabelsMap(toys) {
     console.log('labelsMap', labelsMap)
     return labelsMap
 }
+
+// return storageService.query(STORAGE_KEY)
+//     .then(toys => {
+//         const labelsMap = _getLabelsMap(toys)
+//         const totalInStockToys = toys.filter(toy => toy.inStock).length
+//         const data = Object.keys(labelsMap)
+//             .map(label =>
+//             ({
+//                 title: label,
+//                 value: Math.round((labelsMap[label] / totalInStockToys) * 100)
+//             }))
+//         console.log('data:', data)
+//         return data
+//     })
+
+
 

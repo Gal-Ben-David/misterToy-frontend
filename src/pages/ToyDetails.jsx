@@ -13,13 +13,14 @@ export function ToyDetails() {
         if (toyId) loadToy()
     }, [toyId])
 
-    function loadToy() {
-        toyService.getById(toyId)
-            .then(toy => setToy(toy))
-            .catch(err => {
-                console.log('Had issues in toy details', err)
-                navigate('/')
-            })
+    async function loadToy() {
+        try {
+            const curToy = await toyService.getById(toyId)
+            setToy(curToy)
+        } catch (err) {
+            console.log('Had issues in toy details', err)
+            navigate('/')
+        }
     }
 
     function handleChange({ target }) {
