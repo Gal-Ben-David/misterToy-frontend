@@ -1,0 +1,13 @@
+.chat {
+    position: fixed;
+    width: 30vw;
+    height: 50vh;
+    overflow-y: auto;
+
+    right: 0;
+    bottom: 0;
+    padding: 1em;
+
+    border-radius: 1em;
+    background-color: whitesmoke;
+}
