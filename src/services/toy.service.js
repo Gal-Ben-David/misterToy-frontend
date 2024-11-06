@@ -22,6 +22,7 @@ export const toyService = {
     getStockStatus,
     getReviews,
     addReview,
+    removeReview,
     getLabels
 }
 
@@ -69,6 +70,10 @@ async function getReviews(filterBy) {
 async function addReview({ txt, aboutToyId }) {
     const addedReview = await httpService.post('review/', { txt, aboutToyId })
     return addedReview
+}
+
+async function removeReview(reviewId) {
+    await httpService.delete(`review/${reviewId}`)
 }
 
 function getEmptyToy() {

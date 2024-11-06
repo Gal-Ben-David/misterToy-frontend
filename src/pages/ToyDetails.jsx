@@ -75,6 +75,16 @@ export function ToyDetails() {
         }))
     }
 
+    async function onRemoveReview(reviewId) {
+        try {
+            await toyService.removeReview(reviewId)
+            setReviews(prev => prev.filter(review => review._id !== reviewId))
+            showSuccessMsg('Review removed!')
+        } catch (err) {
+            console.log('problem with removing review', err)
+        }
+    }
+
     if (!toy) return <div>Loading...</div>
     return (
         <section className="toy-details">
@@ -167,7 +177,7 @@ export function ToyDetails() {
                         <span>{review.txt}</span>
                         {/* <span>author:{review.byUser.fullname}</span> */}
                         <span>Created at:{review.createdAt}</span>
-                        <button className="btn"><i className="fa-solid fa-xmark"></i></button>
+                        <button className="btn" onClick={() => onRemoveReview(review._id)}><i className="fa-solid fa-xmark"></i></button>
                     </li>
                 )}
             </ul>
