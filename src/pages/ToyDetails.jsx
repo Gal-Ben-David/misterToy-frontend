@@ -2,10 +2,15 @@ import { useEffect, useState } from "react"
 import { toyService } from "../services/toy.service"
 import { Form, Link, useParams } from "react-router-dom"
 import { saveToy } from "../store/actions/toy.actions.js"
+import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
+
 
 export function ToyDetails() {
     const [msg, setMsg] = useState('')
     const [isAddedMsg, setIsAddedMsg] = useState(false)
+    const [reviews, setReviews] = useState([])
+    const [review, setReview] = useState('')
+
     const [toy, setToy] = useState(null)
     const { toyId } = useParams()
 
@@ -17,9 +22,12 @@ export function ToyDetails() {
         try {
             const curToy = await toyService.getById(toyId)
             setToy(curToy)
+            const fetchedReviews = await toyService.getReviews({ aboutToyId: toyId })
+            setReviews(fetchedReviews || [])
+            console.log(fetchedReviews)
         } catch (err) {
             console.log('Had issues in toy details', err)
-            navigate('/')
+            // navigate('/')
         }
     }
 
@@ -27,6 +35,25 @@ export function ToyDetails() {
         const field = target.name
         let value = target.value
         setMsg(value)
+    }
+
+    function handleReviewChange({ target }) {
+        const field = target.name
+        let value = target.value
+        setReview(value)
+    }
+
+    async function onSaveReview(ev) {
+        ev.preventDefault()
+        try {
+            console.log('review', review)
+            const savedReview = await toyService.addReview({ txt: review, aboutToyId: toy._id })
+            setReviews(prevReviews => [...prevReviews, savedReview])
+            setReview('')
+            showSuccessMsg('Review saved!')
+        } catch (err) {
+            console.log('error saving the review :', err)
+        }
     }
 
     async function onSaveMsg(ev) {
@@ -115,7 +142,40 @@ export function ToyDetails() {
                 )}
             </ul>
 
-            {/* <h1>Toy name: {toy.name}</h1>
+            <hr />
+
+            <form onSubmit={onSaveReview}>
+                <h4>Review</h4>
+                <button type="button" className="btn btn-light">Add Review</button>
+                <>
+                    <input
+                        type="text"
+                        name="reviews"
+                        value={review}
+                        placeholder="Type here..."
+                        onChange={handleReviewChange}
+                        required
+                        autoFocus
+                    />
+                    <button disabled={!review} className="btn btn-save-review">Save</button>
+                    {/* <button type="button" className="btn" onClick={() => setIsAddedMsg(false)}>Cancel</button> */}
+                </>
+            </form>
+            <ul className="toy-review-details">
+                {reviews.length !== 0 && reviews.map(review =>
+                    <li key={review._id} className="toy-review">
+                        <span>{review.txt}</span>
+                        {/* <span>author:{review.byUser.fullname}</span> */}
+                        <span>Created at:{review.createdAt}</span>
+                        <button className="btn"><i className="fa-solid fa-xmark"></i></button>
+                    </li>
+                )}
+            </ul>
+        </section>
+    )
+}
+
+{/* <h1>Toy name: {toy.name}</h1>
             <h4>Price: ${toy.price}</h4>
             <div>
                 <img src={toy.imgUrl} />
@@ -130,10 +190,6 @@ export function ToyDetails() {
                 )}
             </ul> */}
 
-            {/* <p>
+{/* <p>
                 <Link to="/toy/nJ5L4">Next Toy</Link>
             </p> */}
-        </section>
-    )
-
-}

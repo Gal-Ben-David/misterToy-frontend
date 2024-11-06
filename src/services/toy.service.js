@@ -20,6 +20,8 @@ export const toyService = {
     getDefaultFilter,
     getLabelsStats,
     getStockStatus,
+    getReviews,
+    addReview,
     getLabels
 }
 
@@ -57,6 +59,16 @@ async function removeMsg(toyId, msgId) {
     if (!userService.getLoggedinUser()) return Promise.reject('User is not logged in')
     const msgCount = await httpService.delete(BASE_URL + toyId + '/msg/' + msgId)
     return msgCount
+}
+
+async function getReviews(filterBy) {
+    const reviews = await httpService.get('review/', filterBy)
+    return reviews
+}
+
+async function addReview({ txt, aboutToyId }) {
+    const addedReview = await httpService.post('review/', { txt, aboutToyId })
+    return addedReview
 }
 
 function getEmptyToy() {
