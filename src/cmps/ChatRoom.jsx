@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 
 import { socketService, SOCKET_EMIT_SEND_MSG, SOCKET_EVENT_ADD_MSG, SOCKET_EMIT_SET_TOPIC, SOCKET_EVENT_TYPING } from '../services/socket.service.js'
 
-export function ChatRoom({ topic }) {
+export function ChatRoom({ topic, isChat, setIsChat }) {
     const [msg, setMsg] = useState({ txt: '' })
     const [msgs, setMsgs] = useState([])
     const [isTyping, setIsTyping] = useState(false)
@@ -74,19 +74,24 @@ export function ChatRoom({ topic }) {
     }
 
     return (
-        <section className="chat">
-            <h2>Lets Chat</h2>
-            <form onSubmit={sendMsg}>
-                <input
-                    type="text" value={msg.txt} onChange={handleFormChange}
-                    name="txt" autoComplete="off" />
-                <button>Send</button>
-            </form>
-            {isTyping && typingUser && <p>{typingUser} is typing...</p>}
+        <section className={`chat ${isChat && 'active'}`}>
+            <div className="chat-header">
+                <div onClick={() => setIsChat(prev => !prev)}><img src="/img/chat/live-chat.png"></img></div>
+                {isChat && <button className="btn" onClick={() => setIsChat(false)}>x</button>}
+            </div>
+            <div>
+                <form onSubmit={sendMsg}>
+                    <input
+                        type="text" value={msg.txt} onChange={handleFormChange}
+                        name="txt" autoComplete="off" />
+                    <button>Send</button>
+                </form>
+                {isTyping && typingUser && <p>{typingUser} is typing...</p>}
 
-            <ul>
-                {msgs.map((msg, idx) => (<li key={idx}>{(msg.from === loggedInUser.fullname) ? 'me' : msg.from}: {msg.txt}</li>))}
-            </ul>
+                <ul>
+                    {msgs.map((msg, idx) => (<li key={idx}>{(msg.from === loggedInUser.fullname) ? 'me' : msg.from}: {msg.txt}</li>))}
+                </ul>
+            </div>
         </section>
     )
 }

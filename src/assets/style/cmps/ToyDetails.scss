@@ -2,6 +2,17 @@
     display: grid;
     gap: 1em;
 
+    .chat-button {
+        width: 5em;
+        position: fixed;
+        right: 30px;
+        bottom: 20px;
+
+        padding: 1em;
+        border-radius: 50%;
+        background-color: $clr-bg-3;
+    }
+
     .toy-details-table {
         width: 100%;
         max-width: 500px;

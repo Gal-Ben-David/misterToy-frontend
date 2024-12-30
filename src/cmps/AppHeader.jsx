@@ -28,7 +28,7 @@ export function AppHeader() {
             <section className="header-container">
                 <div className='logo'>
                     <div className='img-teddy-bear-logo'>
-                        <img src='src/assets/img/teddy-bear-logo.png' />
+                        <img src='/img/teddy-bear-logo.png' />
                     </div>
                     <h1>MisterToy</h1>
                 </div>

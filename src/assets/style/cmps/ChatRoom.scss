@@ -1,13 +1,29 @@
 .chat {
     position: fixed;
-    width: 30vw;
-    height: 50vh;
-    overflow-y: auto;
+    bottom: 10px;
+    right: -100%;
 
-    right: 0;
-    bottom: 0;
+    height: 50vh;
+    width: 30vw;
     padding: 1em;
 
+    display: grid;
+    align-items: center;
+    overflow-y: auto;
+
     border-radius: 1em;
-    background-color: whitesmoke;
+    background-color: $clr-bg-3;
+
+    // transform: translateX(-200%);
+    transition: 1.5s ease;
+
+    .chat-header {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &.active {
+        right: 10px;
+        // transform: translateX(0);
+    }
 }

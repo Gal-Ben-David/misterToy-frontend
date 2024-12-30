@@ -11,6 +11,7 @@ export function ToyDetails() {
     const [isAddedReview, setIsAddedReview] = useState(false)
     const [reviews, setReviews] = useState([])
     const [review, setReview] = useState('')
+    const [isChat, setIsChat] = useState(false)
 
     const [toy, setToy] = useState(null)
     const { toyId } = useParams()
@@ -190,28 +191,12 @@ export function ToyDetails() {
                         </li>
                     )}
                 </ul>
+
+                <div className="chat-button" onClick={() => setIsChat(true)}><img src="/img/chat/live-chat.png"></img></div>
             </section>
 
-            <ChatRoom topic={toyId} />
+            {<ChatRoom topic={toyId} isChat={isChat} setIsChat={setIsChat} />}
+
         </>
     )
 }
-
-{/* <h1>Toy name: {toy.name}</h1>
-            <h4>Price: ${toy.price}</h4>
-            <div>
-                <img src={toy.imgUrl} />
-            </div>
-            <p className={toy.inStock ? 'available' : 'not-available'}>{toy.inStock ? 'Available' : 'Out of stock'}</p>
-            <h4>Categories:</h4>
-            <ul>
-                {toy.labels.map((label, i) =>
-                    <li key={i} className="toy-label">
-                        {label}
-                    </li>
-                )}
-            </ul> */}
-
-{/* <p>
-                <Link to="/toy/nJ5L4">Next Toy</Link>
-            </p> */}
