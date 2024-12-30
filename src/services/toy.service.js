@@ -23,7 +23,8 @@ export const toyService = {
     getReviews,
     addReview,
     removeReview,
-    getLabels
+    getLabels,
+    getLocations
 }
 
 function query(filterBy = {}) {
@@ -129,6 +130,42 @@ async function getStockStatus() {
         console.log('Cannot set data', err)
     }
 }
+
+function getLocations() {
+    return [
+        {
+            name: 'Ramat Gan',
+            loc: { lat: 32.068160, lng: 34.822548 },
+            id: 'loc001'
+        },
+        {
+            name: 'Bograshov, Tel Aviv',
+            loc: { lat: 32.07484324375375, lng: 34.774144954225775 },
+            id: 'loc002'
+        },
+        {
+            name: 'Dizengoff, Tel Aviv',
+            loc: { lat: 32.094571, lng: 34.776700 },
+            id: 'loc003'
+        },
+        {
+            name: `Giv'atayim`,
+            loc: { lat: 32.07427776577913, lng: 34.80895441202367 },
+            id: 'loc004'
+        },
+        {
+            name: 'Herzeliya',
+            loc: { lat: 32.17143850675182, lng: 34.80159361895732 },
+            id: 'loc005'
+        },
+        {
+            name: 'Holon',
+            loc: { lat: 32.01764270237933, lng: 34.78037978989864 },
+            id: 'loc006'
+        },
+    ]
+}
+
 
 function _getLabelsMap(toys) {
     const toyLabels = toys.filter(toy => toy.inStock).map(toy => toy.labels)

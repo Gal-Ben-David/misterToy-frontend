@@ -15,6 +15,7 @@ const initialState = {
     isLoading: false,
     filterBy: toyService.getDefaultFilter(),
     lastToys: [],
+    locations: toyService.getLocations(),
 }
 
 export function toyReducer(state = initialState, action = {}) {
