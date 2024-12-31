@@ -1,18 +1,17 @@
-import { useEffect, useState } from "react"
-import { toyService } from "../services/toy.service"
-import { Form, Link, useParams } from "react-router-dom"
+import { useEffect, useState } from 'react'
+import { toyService } from '../services/toy.service'
+import { Form, Link, useParams } from 'react-router-dom'
 import { saveToy } from "../store/actions/toy.actions.js"
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { ChatRoom } from '../cmps/ChatRoom.jsx'
+import { Message } from '../cmps/Message.jsx'
+import { Review } from '../cmps/Review.jsx'
 
 export function ToyDetails() {
     const [msg, setMsg] = useState('')
-    const [isAddedMsg, setIsAddedMsg] = useState(false)
-    const [isAddedReview, setIsAddedReview] = useState(false)
     const [reviews, setReviews] = useState([])
     const [review, setReview] = useState('')
     const [isChat, setIsChat] = useState(false)
-
     const [toy, setToy] = useState(null)
     const { toyId } = useParams()
 
@@ -31,18 +30,6 @@ export function ToyDetails() {
             console.log('Had issues in toy details', err)
             // navigate('/')
         }
-    }
-
-    function handleChange({ target }) {
-        const field = target.name
-        let value = target.value
-        setMsg(value)
-    }
-
-    function handleReviewChange({ target }) {
-        const field = target.name
-        let value = target.value
-        setReview(value)
     }
 
     async function onSaveReview(ev) {
@@ -127,26 +114,7 @@ export function ToyDetails() {
 
                 <hr />
 
-                <form onSubmit={onSaveMsg}>
-                    <h4>Messages</h4>
-                    <button type="button" className="btn btn-light" onClick={() => setIsAddedMsg(prev => !prev)}>Add message</button>
-                    {isAddedMsg &&
-                        <>
-                            <input
-                                type="text"
-                                name="msgs"
-                                value={msg}
-                                placeholder="Type here..."
-                                onChange={handleChange}
-                                required
-                                autoFocus
-                            />
-                            <button disabled={!msg} className="btn btn-save-msg">Save</button>
-                            <button type="button" className="btn" onClick={() => setIsAddedMsg(false)}>Cancel</button>
-                        </>
-                    }
-                </form>
-
+                <Message onSaveMsg={onSaveMsg} msg={msg} setMsg={setMsg} />
                 <ul className="toy-msgs-details">
                     {toy.msgs && toy.msgs.map(msg =>
                         <li key={msg.id} className="toy-msg">
@@ -157,35 +125,11 @@ export function ToyDetails() {
 
                 <hr />
 
-                <form onSubmit={onSaveReview}>
-                    <h4>Review</h4>
-
-
-                    <button type="button" className="btn btn-light" onClick={() => setIsAddedReview(prev => !prev)}>Add Review</button>
-
-                    {isAddedReview &&
-                        <>
-                            <input
-                                type="text"
-                                name="reviews"
-                                value={review}
-                                placeholder="Type here..."
-                                onChange={handleReviewChange}
-                                required
-                                autoFocus
-                            />
-                            <button disabled={!review} className="btn btn-save-review">Save</button>
-                            {/* <button type="button" className="btn" onClick={() => setIsAddedMsg(false)}>Cancel</button> */}
-                        </>}
-
-                </form>
-
-
+                <Review review={review} setReview={setReview} onSaveReview={onSaveReview} />
                 <ul className="toy-review-details">
                     {reviews.length !== 0 && reviews.map(review =>
                         <li key={review._id} className="toy-review">
                             <span>{review.txt}</span>
-                            {/* <span>author:{review.byUser.fullname}</span> */}
                             <span>Created at:{review.createdAt}</span>
                             <button className="btn" onClick={() => onRemoveReview(review._id)}><i className="fa-solid fa-xmark"></i></button>
                         </li>
