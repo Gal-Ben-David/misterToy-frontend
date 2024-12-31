@@ -15,6 +15,17 @@
             background-color: darken($clr-btn-2, 8%);
         }
     }
+
+    @else if $type ==circle {
+        background-color: $clr-btn-2;
+        border-radius: 50%;
+        width: 3em;
+        height: 3em;
+
+        &:hover {
+            background-color: darken($clr-btn-2, 8%);
+        }
+    }
 }
 
 @mixin for-mobile-layout {

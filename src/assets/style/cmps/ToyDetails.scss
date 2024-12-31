@@ -3,14 +3,20 @@
     gap: 1em;
 
     .chat-button {
-        width: 5em;
+        width: 6em;
         position: fixed;
         right: 30px;
         bottom: 20px;
 
         padding: 1em;
         border-radius: 50%;
-        background-color: $clr-bg-3;
+        // background-color: $clr-bg-3;
+        transition: .3s ease-in-out;
+        cursor: pointer;
+
+        &:hover {
+            transform: scale(1.05);
+        }
     }
 
     .toy-details-table {

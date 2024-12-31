@@ -192,7 +192,7 @@ export function ToyDetails() {
                     )}
                 </ul>
 
-                <div className="chat-button" onClick={() => setIsChat(true)}><img src="/img/chat/live-chat.png"></img></div>
+                <div className="chat-button" onClick={() => setIsChat(true)}><img src="/img/chat/speak.png"></img></div>
             </section>
 
             {<ChatRoom topic={toyId} isChat={isChat} setIsChat={setIsChat} />}

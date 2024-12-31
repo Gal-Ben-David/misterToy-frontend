@@ -36,6 +36,36 @@ li {
     list-style-type: none;
 }
 
+p {
+
+    &.chat-typing {
+        align-self: flex-end;
+        height: 10px;
+        font-size: .8em;
+    }
+}
+
+pre {
+    .chat-msg & {
+        padding: .5em;
+        width: 70%;
+        border-radius: .5em;
+
+        word-wrap: break-word;
+        font-family: inherit;
+        font-size: 1rem;
+
+        &.me-msg {
+            background-color: white;
+        }
+
+        &.other-msg {
+            background-color: rgb(253, 225, 201);
+        }
+
+    }
+}
+
 img,
 iframe {
     height: 100%;
@@ -56,6 +86,10 @@ iframe {
 
     &-light {
         @include btn($type: light);
+    }
+
+    &-circle {
+        @include btn($type: circle);
     }
 }
 

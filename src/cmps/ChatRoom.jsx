@@ -76,21 +76,39 @@ export function ChatRoom({ topic, isChat, setIsChat }) {
     return (
         <section className={`chat ${isChat && 'active'}`}>
             <div className="chat-header">
-                <div onClick={() => setIsChat(prev => !prev)}><img src="/img/chat/live-chat.png"></img></div>
-                {isChat && <button className="btn" onClick={() => setIsChat(false)}>x</button>}
+                <div onClick={() => setIsChat(prev => !prev)}><img src="/img/chat/speak.png"></img></div>
+                {isChat && <button className="btn" onClick={() => setIsChat(false)}>
+                    <i className="fa-solid fa-xmark" aria-hidden="true"></i>
+                </button>}
             </div>
-            <div>
-                <form onSubmit={sendMsg}>
-                    <input
-                        type="text" value={msg.txt} onChange={handleFormChange}
-                        name="txt" autoComplete="off" />
-                    <button>Send</button>
-                </form>
-                {isTyping && typingUser && <p>{typingUser} is typing...</p>}
+            <div className="chat-container">
 
-                <ul>
-                    {msgs.map((msg, idx) => (<li key={idx}>{(msg.from === loggedInUser.fullname) ? 'me' : msg.from}: {msg.txt}</li>))}
+
+                <ul className="chat-msg-list">
+                    {!loggedInUser ? 'Please log in or sign up to stat a conversation' :
+                        msgs.map((msg, idx) =>
+                        (<li key={idx} className={`chat-msg ${(msg.from === loggedInUser.fullname) ? 'me-msg' : 'other-msg'}`}>
+                            <span>{(msg.from === loggedInUser.fullname) ? 'me' : msg.from}</span>
+                            <pre className={`${(msg.from === loggedInUser.fullname) ? 'me-msg' : 'other-msg'}`}>
+                                {msg.txt}</pre>
+                        </li>))
+                    }
                 </ul>
+
+                <p className="chat-typing">{isTyping && typingUser && `${typingUser} is typing...`}</p>
+                <form className="chat-form" onSubmit={sendMsg}>
+                    <textarea
+                        type="text" value={msg.txt} onChange={handleFormChange}
+                        onKeyDown={(e) => {
+                            if (e.key === 'Enter' && !e.shiftKey) {
+                                e.preventDefault()
+                                e.target.form.requestSubmit()
+                            }
+                        }}
+                        name="txt" autoComplete="off" />
+                    <button disabled={!loggedInUser} className="btn btn-circle"><i className="fa-solid fa-paper-plane"></i></button>
+                </form>
+
             </div>
         </section>
     )
