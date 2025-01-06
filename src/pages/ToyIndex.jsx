@@ -43,7 +43,7 @@ export function ToyIndex() {
                         <Link to="/about"><button className="btn btn-dark btn-stores-locations">Find Our Stores</button></Link>
                     </div>
                     <div className="introduction-img">
-                        <img src="src/assets/img/teddy.png" />
+                        <img src="/assets/img/teddy.png" />
                     </div>
                 </div>
             </section>
