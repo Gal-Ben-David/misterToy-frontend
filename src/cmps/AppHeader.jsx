@@ -38,7 +38,6 @@ export function AppHeader() {
                     <NavLink to="/" >Toys</NavLink>
                     <NavLink to="/about" >About</NavLink>
                     <NavLink to="/dashboard" >Dashboard</NavLink>
-                    {console.log('loggedInUser', loggedinUser)}
 
                     {loggedinUser && <div className="user-info">Hello {loggedinUser.fullname}</div>}
                     <NavLink to="/login" >{loggedinUser ? <button className="btn" onClick={onLogout}>Log out</button> : 'Log in'}</NavLink>

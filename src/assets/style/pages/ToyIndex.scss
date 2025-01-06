@@ -10,6 +10,10 @@
         grid-column: 2;
     }
 
+    @include for-mobile-layout {
+        margin-block-start: 6em;
+    }
+
     .introduction {
         display: grid;
         grid-template-columns: minmax(20px, 280px) 1fr minmax(20px, 280px);
