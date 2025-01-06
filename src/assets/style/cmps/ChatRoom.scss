@@ -4,7 +4,7 @@
     right: -30vw;
 
     height: 50vh;
-    width: 30vw;
+    width: 350px;
     padding: 1em;
 
     display: grid;
@@ -18,15 +18,19 @@
     box-shadow: 0px 2px 13px rgb(0 0 0 / 20%);
     transition: 1.5s ease;
 
+    @include for-mobile-layout {
+        right: -100vw;
+    }
+
     .chat-header {
         position: fixed;
-        padding: 1em;
-        width: 450px;
-
         display: flex;
         justify-content: space-between;
         align-items: start;
         align-self: flex-start;
+
+        width: 350px;
+        padding: 1em;
     }
 
     &.active {
@@ -40,7 +44,7 @@
 
         textarea {
             border-radius: 1em;
-            padding: .5em;
+            padding: .8em;
             border: 1px solid lightgray;
             width: 70%;
 

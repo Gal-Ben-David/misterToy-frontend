@@ -2,6 +2,10 @@
     display: grid;
     gap: 1em;
 
+    @include for-mobile-layout {
+        margin-block-start: 6em;
+    }
+
     .chat-button {
         width: 6em;
         position: fixed;
@@ -20,8 +24,8 @@
     }
 
     .toy-details-table {
-        width: 100%;
         max-width: 500px;
+        min-width: 300px;
         border-collapse: collapse;
         box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
         background-color: #f9f9f9;
