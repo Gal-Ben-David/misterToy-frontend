@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import GoogleMapReact from 'google-map-react'
 
-const AnyReactComponent = ({ text }) => <div style={{ fontSize: '2em' }}>{text}</div>;
+const AnyReactComponent = ({ text }) => <div style={{ fontSize: '2em' }}>{text}</div>
+const apiKey = import.meta.env.VITE_GOOGLE_MAP_API_KEY
 
 export function StoreLocations() {
     const locations = useSelector(storeState => storeState.toyModule.locations)
@@ -30,7 +31,7 @@ export function StoreLocations() {
 
                 <div className="google-map" style={{ height: '50vh', width: '100%' }}>
                     <GoogleMapReact
-                        bootstrapURLKeys={{ key: "AIzaSyA5YAKbctMWmj2etXv-KY7MSXDMGaWr0qs" }}
+                        bootstrapURLKeys={{ key: apiKey }}
                         center={center}
                         defaultZoom={zoom}
                     >
