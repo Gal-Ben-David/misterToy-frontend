@@ -113,11 +113,11 @@ async function getLabelsStats() {
                 title: label,
                 value: Math.round((labelsMap[label] / totalInStockToys) * 100)
             }))
-        console.log('data:', data)
         return data
 
     } catch (err) {
         console.log('Cannot set data', err)
+        throw err
     }
 }
 
@@ -134,6 +134,7 @@ async function getStockStatus() {
 
     } catch (err) {
         console.log('Cannot set data', err)
+        throw err
     }
 }
 
@@ -180,23 +181,7 @@ function _getLabelsMap(toys) {
         map[label]++
         return map
     }, {})
-    console.log('labelsMap', labelsMap)
     return labelsMap
 }
-
-// return storageService.query(STORAGE_KEY)
-//     .then(toys => {
-//         const labelsMap = _getLabelsMap(toys)
-//         const totalInStockToys = toys.filter(toy => toy.inStock).length
-//         const data = Object.keys(labelsMap)
-//             .map(label =>
-//             ({
-//                 title: label,
-//                 value: Math.round((labelsMap[label] / totalInStockToys) * 100)
-//             }))
-//         console.log('data:', data)
-//         return data
-//     })
-
 
 

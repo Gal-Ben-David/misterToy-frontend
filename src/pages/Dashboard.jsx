@@ -56,6 +56,7 @@ export function Dashboard() {
     }, [labelsStats])
 
     useEffect(() => {
+        console.log(stockStats)
         setDataStockStats({
             labels: ['In Stock', 'Not in stock'],
             datasets: [
