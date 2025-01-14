@@ -5,7 +5,6 @@
     width: 100%;
     padding: 1em;
     background-color: $clr-bg-4;
-    /* box-shadow: 0 0px 8px rgba(0, 0, 0, 0.2); */
 
     @include for-mobile-layout {
         position: fixed;
@@ -53,6 +52,7 @@
 
     .img-teddy-bear-logo {
         height: 4em;
+        width: 4em;
 
         & img {
             object-fit: contain;
