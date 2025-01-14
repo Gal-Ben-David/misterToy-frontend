@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from "react"
 import { toyService } from "../services/toy.service.js"
 
-import { Chart as ChartJS, CategoryScale, ArcElement, Tooltip, Legend, BarElement, LinearScale } from 'chart.js'
+import { Chart as ChartJS, CategoryScale, ArcElement, Tooltip, Legend, BarElement, BarController, LinearScale } from 'chart.js'
 import { Pie } from 'react-chartjs-2'
 import { Chart } from 'react-chartjs-2'
 
-ChartJS.register(ArcElement, CategoryScale, Tooltip, Legend, BarElement, LinearScale)
+ChartJS.register(ArcElement, CategoryScale, Tooltip, Legend, BarElement, BarController, LinearScale)
 
 export function Dashboard() {
 
