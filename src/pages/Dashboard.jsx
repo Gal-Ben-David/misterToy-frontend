@@ -15,15 +15,19 @@ export function Dashboard() {
     const [dataStockStats, setDataStockStats] = useState(null)
 
     useEffect(() => {
-        toyService.getLabelsStats()
-            .then(res => {
-                setLabelsStats(res)
-            })
+        const labelsStats = async () => {
+            const labelsStats = await toyService.getLabelsStats()
+            setLabelsStats(labelsStats)
+        }
 
-        toyService.getStockStatus()
-            .then(res => {
-                setStockStats(res)
-            })
+        const stockStats = async () => {
+            const stockStats = await toyService.getStockStatus()
+            setStockStats(stockStats)
+        }
+
+        labelsStats()
+        stockStats()
+
     }, [])
 
     useEffect(() => {
