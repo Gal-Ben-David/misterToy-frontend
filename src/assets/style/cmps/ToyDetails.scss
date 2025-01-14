@@ -3,7 +3,7 @@
     gap: 1em;
 
     @include for-mobile-layout {
-        margin-block-start: 6em;
+        margin-block-start: 7em;
     }
 
     .chat-button {
@@ -20,6 +20,11 @@
 
         &:hover {
             transform: scale(1.05);
+        }
+
+        @include for-mobile-layout {
+            right: 10px;
+            bottom: 10px;
         }
     }
 

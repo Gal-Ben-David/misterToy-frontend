@@ -8,6 +8,10 @@
         width: 20em;
     }
 
+    @include for-mobile-layout {
+        margin-block-start: 2em;
+    }
+
     .charts {
         display: flex;
         text-align: center;

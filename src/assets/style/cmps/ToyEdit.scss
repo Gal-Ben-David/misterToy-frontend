@@ -1,6 +1,11 @@
 .toy-edit-inputs {
     display: grid;
     gap: 1.5em;
+
+    @include for-mobile-layout {
+        margin-block-start: 3.5em;
+        padding-block-end: 1em;
+    }
 }
 
 .categories-and-img {
@@ -8,6 +13,10 @@
     flex-wrap: wrap;
     gap: 10em;
     padding: 1em;
+
+    @include for-mobile-layout {
+        gap: 2em;
+    }
 }
 
 .toy-edit-img-container {

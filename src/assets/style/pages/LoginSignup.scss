@@ -3,13 +3,14 @@
     gap: 2em;
     justify-content: center;
 
+
+    @include for-mobile-layout {
+        margin-block-start: 10em;
+    }
+
     .login-form {
         display: grid;
         gap: 1em;
         justify-content: center;
-
-        // .btn-login {
-        //     justify-self: center;
-        // }
     }
 }
