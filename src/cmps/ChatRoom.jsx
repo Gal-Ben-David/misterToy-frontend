@@ -14,8 +14,6 @@ export function ChatRoom({ topic, isChat, setIsChat }) {
     const botTimeoutRef = useRef()
     const typingTimeoutRef = useRef()
 
-    console.log(topic)
-
     useEffect(() => {
         socketService.on(SOCKET_EVENT_ADD_MSG, addMsg)
         socketService.on(SOCKET_EVENT_TYPING, handleTyping)

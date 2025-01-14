@@ -1,6 +1,7 @@
 .toy-details {
     display: grid;
     gap: 1em;
+    margin-block-end: 2em;
 
     @include for-mobile-layout {
         margin-block-start: 7em;
@@ -61,6 +62,31 @@
             border-radius: 100vh;
             padding: 0.2em 1em;
             font-size: 0.9rem;
+        }
+    }
+
+    .form-header {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .data-list {
+        display: grid;
+        gap: 1em;
+
+        & li {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .data-details {
+                display: flex;
+                flex-direction: column;
+
+                .created-or-author {
+                    font-size: .8rem;
+                }
+            }
         }
     }
 }

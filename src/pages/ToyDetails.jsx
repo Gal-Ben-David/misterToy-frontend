@@ -25,9 +25,9 @@ export function ToyDetails() {
             setToy(curToy)
             const fetchedReviews = await toyService.getReviews({ aboutToyId: toyId })
             setReviews(fetchedReviews || [])
-            console.log(fetchedReviews)
         } catch (err) {
             console.log('Had issues in toy details', err)
+            throw err
             // navigate('/')
         }
     }
@@ -42,6 +42,7 @@ export function ToyDetails() {
             showSuccessMsg('Review saved!')
         } catch (err) {
             console.log('error saving the review :', err)
+            throw err
         }
     }
 
@@ -71,6 +72,7 @@ export function ToyDetails() {
             showSuccessMsg('Review removed!')
         } catch (err) {
             console.log('problem with removing review', err)
+            throw err
         }
     }
 
@@ -115,10 +117,14 @@ export function ToyDetails() {
                 <hr />
 
                 <Message onSaveMsg={onSaveMsg} msg={msg} setMsg={setMsg} />
-                <ul className="toy-msgs-details">
+                <ul className="data-list toy-msgs-details">
                     {toy.msgs && toy.msgs.map(msg =>
                         <li key={msg.id} className="toy-msg">
-                            <span>{msg.txt}</span><span>author:{msg.by?.fullname || ''}</span><button onClick={() => onRemoveMsg(msg.id)} className="btn"><i className="fa-solid fa-xmark"></i></button>
+                            <div className="data-details">
+                                <span>{msg.txt}</span>
+                                <span className="created-or-author">Added by {msg.by?.fullname || ''}</span>
+                            </div>
+                            <button onClick={() => onRemoveMsg(msg.id)} className="btn"><i className="fa-solid fa-xmark"></i></button>
                         </li>
                     )}
                 </ul>
@@ -126,14 +132,26 @@ export function ToyDetails() {
                 <hr />
 
                 <Review review={review} setReview={setReview} onSaveReview={onSaveReview} />
-                <ul className="toy-review-details">
-                    {reviews.length !== 0 && reviews.map(review =>
-                        <li key={review._id} className="toy-review">
-                            <span>{review.txt}</span>
-                            <span>Created at:{review.createdAt}</span>
-                            <button className="btn" onClick={() => onRemoveReview(review._id)}><i className="fa-solid fa-xmark"></i></button>
-                        </li>
-                    )}
+                <ul className="data-list toy-review-details">
+                    {reviews.length === 0 ? 'No reviews yet, be the first one!' :
+                        reviews.map(review =>
+                            <li key={review._id} className="toy-review">
+                                <div className="data-details">
+                                    <span>{review.txt}</span>
+                                    <span className="created-or-author">
+                                        {new Date(review.createdAt).toLocaleString('en-GB', {
+                                            weekday: 'short',
+                                            year: 'numeric',
+                                            month: 'short',
+                                            day: 'numeric',
+                                            hour: '2-digit',
+                                            minute: '2-digit'
+                                        })}
+                                    </span>
+                                </div>
+                                <button className="btn" onClick={() => onRemoveReview(review._id)}><i className="fa-solid fa-xmark"></i></button>
+                            </li>
+                        )}
                 </ul>
 
                 <div className="chat-button" onClick={() => setIsChat(true)}><img src="/img/chat/speak.png"></img></div>

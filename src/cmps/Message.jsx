@@ -10,8 +10,10 @@ export function Message({ setMsg, msg, onSaveMsg }) {
 
     return (
         <form onSubmit={onSaveMsg}>
-            <h4>Messages</h4>
-            <button type="button" className="btn btn-light" onClick={() => setIsAddedMsg(prev => !prev)}>Add message</button>
+            <div className="form-header">
+                <h4>Messages</h4>
+                <button type="button" className="btn btn-light" onClick={() => setIsAddedMsg(prev => !prev)}>Add message</button>
+            </div>
             {isAddedMsg &&
                 <>
                     <input
