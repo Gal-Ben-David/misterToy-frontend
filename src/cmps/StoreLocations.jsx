@@ -1,18 +1,27 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import GoogleMapReact from 'google-map-react'
+import { toyService } from '../services/toy.service'
 
 const AnyReactComponent = ({ text }) => <div style={{ fontSize: '2em' }}>{text}</div>
-const apiKey = import.meta.env.VITE_GOOGLE_MAP_API_KEY
 
 export function StoreLocations() {
     const locations = useSelector(storeState => storeState.toyModule.locations)
+    const [apiKey, setApiKey] = useState('')
     const [center, setCenter] = useState({})
     const zoom = 11
 
     useEffect(() => {
-        if (locations.length > 0) setCenter(locations[2].loc)
+        const fetchApiKey = async () => {
+            const api = await toyService.getGoogleMapsAPI()
+            setApiKey(api)
+        }
+        fetchApiKey()
     }, [])
+
+    useEffect(() => {
+        if (locations.length > 0) setCenter(locations[2].loc)
+    }, [apiKey])
 
     function onMapClicked({ lat, lng }) {
         setCenter({ lat, lng })

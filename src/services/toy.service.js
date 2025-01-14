@@ -24,7 +24,8 @@ export const toyService = {
     addReview,
     removeReview,
     getLabels,
-    getLocations
+    getLocations,
+    getGoogleMapsAPI
 }
 
 function query(filterBy = {}) {
@@ -49,6 +50,11 @@ function save(toy) {
     } else {
         return httpService.post(BASE_URL, toy)
     }
+}
+
+async function getGoogleMapsAPI() {
+    const googleMapsAPI = await httpService.get('about/')
+    return googleMapsAPI.apiKey
 }
 
 async function addMsg(toyId, msg) {
