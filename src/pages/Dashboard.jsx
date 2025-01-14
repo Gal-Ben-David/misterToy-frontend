@@ -15,18 +15,18 @@ export function Dashboard() {
     const [dataStockStats, setDataStockStats] = useState(null)
 
     useEffect(() => {
-        const labelsStats = async () => {
-            const labelsStats = await toyService.getLabelsStats()
-            setLabelsStats(labelsStats)
+        const getLabelsStats = async () => {
+            const labelsSt = await toyService.getLabelsStats()
+            setLabelsStats(labelsSt)
         }
 
-        const stockStats = async () => {
-            const stockStats = await toyService.getStockStatus()
-            setStockStats(stockStats)
+        const getStockStats = async () => {
+            const stockSt = await toyService.getStockStatus()
+            setStockStats(stockSt)
         }
 
-        labelsStats()
-        stockStats()
+        getLabelsStats()
+        getStockStats()
 
     }, [])
 
@@ -56,7 +56,6 @@ export function Dashboard() {
     }, [labelsStats])
 
     useEffect(() => {
-        console.log(stockStats)
         setDataStockStats({
             labels: ['In Stock', 'Not in stock'],
             datasets: [
@@ -78,7 +77,7 @@ export function Dashboard() {
                 },
             ],
         })
-    }, [dataLabelsStats])
+    }, [stockStats])
 
     return (
         <section className="dashboard">
