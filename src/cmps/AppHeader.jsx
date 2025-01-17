@@ -34,10 +34,9 @@ export function AppHeader() {
                 </div>
                 <i className="fa-solid fa-ellipsis hamburger" onClick={onToggleMenu}></i>
                 <nav className="app-nav" ref={menu}>
-                    {/* <NavLink to="/" >Home</NavLink> */}
-                    <NavLink to="/" >Toys</NavLink>
-                    <NavLink to="/about" >About</NavLink>
-                    <NavLink to="/dashboard" >Dashboard</NavLink>
+                    <NavLink to="/" className={({ isActive }) => (isActive ? 'active' : '')}>Toys</NavLink>
+                    <NavLink to="/about" className={({ isActive }) => (isActive ? 'active' : '')}>About</NavLink>
+                    <NavLink to="/dashboard" className={({ isActive }) => (isActive ? 'active' : '')}>Dashboard</NavLink>
 
                     {loggedinUser && <div className="user-info">Hello {loggedinUser.fullname}</div>}
                     <NavLink to="/login" >{loggedinUser ? <button className="btn" onClick={onLogout}>Log out</button> : 'Log in'}</NavLink>

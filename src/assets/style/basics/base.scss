@@ -25,6 +25,12 @@ h6 {
 a {
     text-decoration: none;
     color: inherit;
+
+    .app-nav & {
+        &.active {
+            text-decoration: underline;
+        }
+    }
 }
 
 ul {
