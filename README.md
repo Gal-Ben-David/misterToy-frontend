@@ -1,8 +1,10 @@
-# React + Vite
+# MistryToy 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack toy store platform using React, Redux, Node.js and MongoDB, with user authentication and real-time chat functionality via Socket.io, enabling seamless communication between users.
 
-Currently, two official plugins are available:
+🔗 [Live Demo](https://mistertoy-atuk.onrender.com/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![main-page](https://res.cloudinary.com/dvykycdey/image/upload/v1736868248/misterToy_tvm313.png)
+
+![toys](https://res.cloudinary.com/dvykycdey/image/upload/v1736868102/misterToy-toys_m0mroc.png)
+
