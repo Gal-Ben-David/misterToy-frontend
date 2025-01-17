@@ -24,7 +24,7 @@ export function LoginForm({ isSignup }) {
 
     return (
         <form className="login-form" onSubmit={onLogin}>
-            <h2>{isSignup ? 'Create Account' : 'Log in to MisterToy'}</h2>
+            <h2>{isSignup ? 'Create Account' : 'Log in'}</h2>
             <input
                 type="text"
                 name="username"
@@ -51,7 +51,7 @@ export function LoginForm({ isSignup }) {
                 onChange={handleChange}
                 required
             />}
-            <button className="btn btn-dark btn-login">{isSignup ? 'Signup' : 'Login'}</button>
+            <button className="btn btn-dark btn-login">{isSignup ? 'Sign up' : 'Log in'}</button>
         </form>
     )
 }

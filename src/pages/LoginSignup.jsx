@@ -3,6 +3,7 @@ import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
 import { userService } from '../services/user.service.js'
 import { login, signup } from '../store/actions/user.actions.js'
 import { LoginForm } from '../cmps/LoginForm.jsx'
+import registrationImg from '/img/registeration-teddy-face2.svg'
 
 export function LoginSignup() {
     const [isSignup, setIsSignUp] = useState(false)
@@ -37,11 +38,18 @@ export function LoginSignup() {
             />
             <div className="btn btns">
                 <a href="#" onClick={() => setIsSignUp(!isSignup)}>
-                    {isSignup ?
-                        'Already a member? Log in' :
-                        'New user? Sign up here'
+                    {
+                        <div className="login-or-signup">
+                            <span>{isSignup ? 'Already a member?' : 'New user?'}</span>
+                            <span className="registration-action">{isSignup ? 'Log in' : 'Sign up here'}</span>
+                        </div>
                     }
+
                 </a >
+            </div>
+
+            <div className="registration-img">
+                <img src={registrationImg} />
             </div>
         </div >
     )

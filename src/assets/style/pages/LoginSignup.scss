@@ -1,16 +1,28 @@
 .login-page {
     display: grid;
-    gap: 2em;
+    gap: 1em;
     justify-content: center;
+    width: 80vw;
 
 
     @include for-mobile-layout {
         margin-block-start: 10em;
     }
 
-    .login-form {
-        display: grid;
-        gap: 1em;
-        justify-content: center;
+    .registration-img {
+        align-self: end;
+        max-width: 500px;
     }
+
+    .login-or-signup {
+        display: flex;
+        gap: .5em;
+        justify-self: center;
+
+        .registration-action {
+            text-decoration: underline;
+        }
+    }
+
+
 }

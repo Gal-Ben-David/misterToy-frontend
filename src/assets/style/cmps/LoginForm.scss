@@ -1,0 +1,13 @@
+.login-form {
+    display: grid;
+    gap: 1em;
+    justify-self: center;
+    width: 250px;
+
+    text-align: center;
+
+    .btn-login {
+        justify-self: center;
+        width: 100px;
+    }
+}

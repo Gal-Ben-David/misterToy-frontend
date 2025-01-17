@@ -169,6 +169,14 @@ h4 {
     }
 }
 
+input {
+    .login-form & {
+        padding: .5em 1.5em;
+        border-radius: 100vh;
+        border: 1px solid lightgray;
+    }
+}
+
 .loader {
     height: 4px;
     width: 130px;
