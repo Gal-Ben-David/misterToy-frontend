@@ -1,4 +1,8 @@
 .toy-preview {
     display: grid;
     gap: 0.2em;
+
+    .btn-remove-toy {
+        margin-block-start: .5em;
+    }
 }

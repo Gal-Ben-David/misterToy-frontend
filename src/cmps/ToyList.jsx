@@ -14,12 +14,7 @@ export function ToyList({ toys, onRemoveToy }) {
                         <div className="toy-img">
                             <img src={toy.imgUrl} />
                         </div>
-                        <ToyPreview toy={toy} />
-
-                        <div>
-                            <button className="btn btn-light btn-remove-toy" onClick={() => onRemoveToy(toy._id)}>Remove</button>
-                            {/* <button onClick={() => onEditToy(toy)}>Edit</button> */}
-                        </div>
+                        <ToyPreview toy={toy} onRemoveToy={onRemoveToy} />
                     </li>)}
             </ul>
         </section>
