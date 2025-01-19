@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 import { toyService } from '../services/toy.service'
-import { Form, Link, useParams } from 'react-router-dom'
-import { saveToy } from "../store/actions/toy.actions.js"
+import { Link, useParams } from 'react-router-dom'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { ChatRoom } from '../cmps/ChatRoom.jsx'
-import { Message } from '../cmps/Message.jsx'
-import { Review } from '../cmps/Review.jsx'
+import { Message } from '../cmps/toy-details/Message.jsx'
+import { Review } from '../cmps/toy-details/Review.jsx'
+import { ToyDetailsTable } from '../cmps/toy-details/ToyDetailsTable.jsx'
 
 export function ToyDetails() {
     const [msg, setMsg] = useState('')
@@ -80,34 +80,7 @@ export function ToyDetails() {
     return (
         <>
             <section className="toy-details">
-                <table className="toy-details-table">
-                    <tbody>
-                        <tr>
-                            <td>Toy name</td>
-                            <td>{toy.name}</td>
-                        </tr>
-                        <tr>
-                            <td>Price</td>
-                            <td>${toy.price}</td>
-                        </tr>
-                        <tr>
-                            <td>Inventory</td>
-                            <td>{toy.inStock ? 'Available' : 'Out of stock'}</td>
-                        </tr>
-                        <tr>
-                            <td>Categories</td>
-                            <td >
-                                <ul className="toy-labels-details">
-                                    {toy.labels.map((label, i) =>
-                                        <li key={i} className="toy-label">
-                                            {label}
-                                        </li>
-                                    )}
-                                </ul>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <ToyDetailsTable toy={toy} />
 
                 <div>
                     <Link className="btn" to={`/toy/edit/${toy._id}`}>Edit</Link> &nbsp;
