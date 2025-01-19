@@ -186,6 +186,8 @@ input {
 .loader {
     height: 4px;
     width: 130px;
+    margin: auto;
+    margin-block-start: 2em;
     --c: no-repeat linear-gradient(#6100ee 0 0);
     background: var(--c), var(--c), #d7b8fc;
     background-size: 60% 100%;

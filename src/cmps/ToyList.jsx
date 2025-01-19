@@ -1,9 +1,10 @@
 import { ToyPreview } from "./ToyPreview.jsx"
 import { Link } from "react-router-dom"
+import { useSelector } from 'react-redux'
 
 export function ToyList({ toys, onRemoveToy }) {
-    // console.log('toys:', toys)
-    if (!toys) return <div>Loading...</div>
+
+    const loggedInUser = useSelector(storeState => storeState.userModule.loggedInUser)
 
     return (
         <section className="products">
@@ -14,7 +15,7 @@ export function ToyList({ toys, onRemoveToy }) {
                         <div className="toy-img">
                             <img src={toy.imgUrl} />
                         </div>
-                        <ToyPreview toy={toy} onRemoveToy={onRemoveToy} />
+                        <ToyPreview toy={toy} onRemoveToy={onRemoveToy} loggedInUser={loggedInUser} />
                     </li>)}
             </ul>
         </section>

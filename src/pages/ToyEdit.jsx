@@ -195,23 +195,6 @@ export function ToyEdit() {
                     <Link className="btn" to="/">Cancel</Link>
                 </div>
             </div>
-
-            {/* <label htmlFor="toy-name">Toy name: </label>
-                <input type="text"
-                    name="name"
-                    id="toy-name"
-                    placeholder="Enter name..."
-                    value={toyToEdit.name}
-                    onChange={handleChange}
-                /> */}
-            {/* <label htmlFor="price">Price: </label>
-                <input type="number"
-                    name="price"
-                    id="price"
-                    placeholder="Enter price"
-                    value={toyToEdit.price}
-                    onChange={handleChange}
-                /> */}
         </section>
     )
 

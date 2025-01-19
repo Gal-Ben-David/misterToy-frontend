@@ -1,0 +1,28 @@
+.user-msg {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: lightgray;
+    padding: .6em 1.5em;
+
+    position: fixed;
+    right: 1em;
+    bottom: 1em;
+
+    border-radius: 1em;
+
+    &.success {
+        background-color: #E2F6D3;
+    }
+
+    &.error {
+        background-color: lightpink;
+    }
+
+    button {
+        padding: 0.5em;
+        border: none;
+        border-radius: 1em;
+        background-color: transparent;
+    }
+}

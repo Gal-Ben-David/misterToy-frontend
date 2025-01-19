@@ -90,7 +90,7 @@ function getEmptyToy() {
         price: 100,
         labels: [],
         inStock: true,
-        imgUrl: 'src/assets/img/default-pic.jpg'
+        imgUrl: '/img/default-pic.jpg'
     }
 }
 

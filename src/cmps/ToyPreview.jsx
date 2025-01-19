@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom"
-import { useSelector } from 'react-redux'
 
-export function ToyPreview({ toy, onRemoveToy }) {
-    const loggedInUser = useSelector(storeState => storeState.userModule.loggedInUser)
+
+export function ToyPreview({ toy, onRemoveToy, loggedInUser }) {
+
 
     return (
         <article className="toy-preview">
@@ -16,7 +16,7 @@ export function ToyPreview({ toy, onRemoveToy }) {
                 <Link to={`/toy/${toy._id}`}>Details</Link>
             </div>
             {
-                loggedInUser &&
+                loggedInUser && loggedInUser.isAdmin &&
                 <div>
                     <button className="btn btn-light btn-remove-toy" onClick={() => onRemoveToy(toy._id)}>Remove</button>
                 </div>

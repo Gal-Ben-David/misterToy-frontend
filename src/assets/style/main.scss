@@ -15,7 +15,7 @@
 @import 'pages/ToyIndex';
 @import 'pages/Dashboard';
 @import 'pages/About';
-@import 'pages/LoginSignup.scss';
+@import 'pages/LoginSignup';
 
 /* cmps */
 @import 'cmps/ToyList';
@@ -25,5 +25,6 @@
 @import 'cmps/StoreLocations';
 @import 'cmps/ToyDetails';
 @import 'cmps/ToyEdit';
-@import 'cmps/ChatRoom.scss';
-@import 'cmps/LoginForm.scss';
+@import 'cmps/ChatRoom';
+@import 'cmps/LoginForm';
+@import 'cmps/UserMsg';
