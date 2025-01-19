@@ -86,6 +86,32 @@ export function ToyEdit() {
         })
     }
 
+    function loadImageFromInput(ev) {
+        const reader = new FileReader()
+
+        reader.onload = async (event) => {
+            const base64Img = event.target.result
+            const fileName = ev.target.files[0].name
+
+            try {
+                showSuccessMsg('Uploading in progress...')
+                const uploadedImgUrl = await toyService.uploadImg(base64Img)
+                const img = new Image()
+                img.crossOrigin = 'Anonymous'
+                img.src = uploadedImgUrl
+                img.onload = () => {
+                    setToyToEdit(prevToyToEdit => ({ ...prevToyToEdit, imgUrl: uploadedImgUrl }))
+                    showSuccessMsg('Image uploaded successfully!')
+                }
+            } catch (error) {
+                console.error('Image upload failed:', error)
+                showErrorMsg('Failed to upload image')
+            }
+        }
+
+        reader.readAsDataURL(ev.target.files[0])
+    }
+
     async function onSaveToy() {
         // ev.preventDefault()
         if (!toyToEdit.price) toyToEdit.price = 100
@@ -159,7 +185,14 @@ export function ToyEdit() {
                     </div>
 
                     <div className="toy-edit-img-container">
-                        <img src={!toyToEdit._id ? DefaultImg : toyToEdit.imgUrl} />
+                        <img src={toyToEdit.imgUrl} />
+                        <label htmlFor="file-upload" className="btn-edit-toy-img">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 -960 960 960" width="18px" fill="#5f6368">
+                                <path d="M200-200h57l391-391-57-57-391 391v57Zm-80 80v-170l528-527q12-11 26.5-17t30.5-6q16 0 31 6t26 18l55 56q12 11 17.5 26t5.5 30q0 16-5.5 30.5T817-647L290-120H120Zm640-584-56-56 56 56Zm-141 85-28-29 57 57-29-28Z" />
+                            </svg>
+                        </label>
+                        <input type="file" id="file-upload" className="file-input btn" name="file-upload"
+                            onChange={(ev) => loadImageFromInput(ev)}></input>
                     </div>
                 </div>
 

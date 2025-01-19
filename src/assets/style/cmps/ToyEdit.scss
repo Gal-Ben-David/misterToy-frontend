@@ -20,9 +20,29 @@
 }
 
 .toy-edit-img-container {
+    position: relative;
     width: 10em;
     border-radius: 1em;
     overflow: hidden;
+
+    .btn-edit-toy-img {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+
+        display: none;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        background-color: $clr-bg-4;
+        cursor: pointer;
+    }
+
+    &:hover .btn-edit-toy-img {
+        display: flex;
+    }
 }
 
 .actions-edit-form {

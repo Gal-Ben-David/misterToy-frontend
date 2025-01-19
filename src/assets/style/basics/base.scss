@@ -184,6 +184,10 @@ input {
         border-radius: 100vh;
         border: 1px solid lightgray;
     }
+
+    &.file-input {
+        display: none;
+    }
 }
 
 .loader {
