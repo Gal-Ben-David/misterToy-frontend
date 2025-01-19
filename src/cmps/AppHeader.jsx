@@ -3,19 +3,21 @@ import { useRef } from "react"
 import { useDispatch, useSelector } from 'react-redux'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
 import { logout } from '../store/actions/user.actions.js'
+import { useNavigate } from 'react-router'
 
 export function AppHeader() {
-
-    const menu = useRef()
     const loggedinUser = useSelector(storeState => storeState.userModule.loggedInUser)
+    const navigate = useNavigate()
+    const menu = useRef()
 
     async function onLogout() {
         try {
             await logout()
-            navigate('/')
+            navigate('/login')
             showSuccessMsg(`Bye now`)
         } catch (err) {
             showErrorMsg('Cannot logout')
+            throw err
         }
     }
 

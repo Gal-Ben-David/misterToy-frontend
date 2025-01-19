@@ -22,8 +22,8 @@ function login({ username, password }) {
         })
 }
 
-function signup({ username, password, fullname }) {
-    const user = { username, password, fullname, score: 10000 }
+function signup({ username, password, fullname, isAdmin }) {
+    const user = { username, password, fullname, score: 10000, isAdmin }
     return httpService.post(BASE_URL + 'signup', user)
         .then(user => {
             if (user) return _setLoggedinUser(user)
@@ -67,7 +67,8 @@ function getEmptyCredentials() {
     return {
         username: '',
         password: '',
-        fullname: ''
+        fullname: '',
+        isAdmin: false
     }
 }
 

@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useNavigate } from 'react-router'
 import { userService } from "../services/user.service.js"
-import { login } from "../store/actions/user.actions.js"
+import { login, signup } from "../store/actions/user.actions.js"
 
 
 export function LoginForm({ isSignup }) {
@@ -18,7 +18,9 @@ export function LoginForm({ isSignup }) {
         if (ev) ev.preventDefault()
 
         if (!credentials.username) return
-        await login(credentials)
+
+        if (isSignup) await signup(credentials)
+        else await login(credentials)
         navigate('/')
     }
 
