@@ -14,16 +14,35 @@
         max-width: 500px;
     }
 
-    .login-or-signup {
-        display: flex;
+    .registration {
+        display: grid;
         gap: .5em;
-        justify-self: center;
-        text-align: center;
 
-        .registration-action {
-            text-decoration: underline;
+        .login-or-signup {
+            display: flex;
+            gap: .5em;
+            justify-self: center;
+            text-align: center;
+
+            .registration-action {
+                text-decoration: underline;
+            }
         }
+
+        .guest-mode {
+            display: flex;
+            gap: .6em;
+            justify-self: center;
+            text-align: center;
+
+            span {
+                margin-block-start: .1em;
+            }
+        }
+
     }
+
+
 
 
 }

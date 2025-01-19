@@ -1,10 +1,8 @@
 import { useState } from "react"
 import { useNavigate } from 'react-router'
 import { userService } from "../services/user.service.js"
-import { login, signup } from "../store/actions/user.actions.js"
 
-
-export function LoginForm({ isSignup }) {
+export function LoginForm({ isSignup, onLogin }) {
 
     const [credentials, setCredentials] = useState(userService.getEmptyCredentials())
     const navigate = useNavigate()
@@ -14,18 +12,8 @@ export function LoginForm({ isSignup }) {
         setCredentials(prevCreds => ({ ...prevCreds, [field]: value }))
     }
 
-    async function onLogin(ev = null) {
-        if (ev) ev.preventDefault()
-
-        if (!credentials.username) return
-
-        if (isSignup) await signup(credentials)
-        else await login(credentials)
-        navigate('/')
-    }
-
     return (
-        <form className="login-form" onSubmit={onLogin}>
+        <form className="login-form" onSubmit={(ev) => onLogin(ev, credentials)}>
             <h2>{isSignup ? 'Create Account' : 'Log in'}</h2>
             <input
                 type="text"
