@@ -7,7 +7,7 @@ import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 export function ToyIndex() {
-
+    const loggedInUser = useSelector(storeState => storeState.userModule.loggedInUser)
     const toys = useSelector(storeState => storeState.toyModule.toys)
     const filterBy = useSelector(storeState => storeState.toyModule.filterBy)
     const isLoading = useSelector(storeState => storeState.toyModule.isLoading)
@@ -49,7 +49,10 @@ export function ToyIndex() {
             </section>
 
             <ToyFilter filterBy={filterBy} onSetFilter={onSetFilter} />
-            <Link className="btn btn-add-toy" style={{ backgroundColor: 'whitesmoke' }} to="/toy/edit"> Add Toy</Link>
+
+            {loggedInUser && loggedInUser.isAdmin &&
+                <Link className="btn btn-add-toy" style={{ backgroundColor: 'whitesmoke' }} to="/toy/edit"> Add Toy</Link>
+            }
 
             {!isLoading
                 ? <ToyList

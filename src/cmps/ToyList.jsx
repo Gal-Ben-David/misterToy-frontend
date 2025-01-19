@@ -5,6 +5,8 @@ export function ToyList({ toys, onRemoveToy }) {
 
     const loggedInUser = useSelector(storeState => storeState.userModule.loggedInUser)
 
+    if (toys.length === 0) return <div className="no-toys-msg">No toys were found...</div>
+
     return (
         <section className="products">
             <h3>Our Magics</h3>

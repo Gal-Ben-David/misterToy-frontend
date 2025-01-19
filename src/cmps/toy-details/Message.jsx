@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-export function Message({ setMsg, msg, onSaveMsg }) {
+export function Message({ setMsg, msg, onSaveMsg, loggedInUser }) {
     const [isAddedMsg, setIsAddedMsg] = useState(false)
 
     function handleChange({ target }) {
@@ -9,13 +9,13 @@ export function Message({ setMsg, msg, onSaveMsg }) {
     }
 
     return (
-        <form onSubmit={onSaveMsg}>
+        <form className="adding-form" onSubmit={onSaveMsg}>
             <div className="form-header">
                 <h4>Messages</h4>
                 <button type="button" className="btn btn-light" onClick={() => setIsAddedMsg(prev => !prev)}>Add message</button>
             </div>
             {isAddedMsg &&
-                <>
+                <div className="adding-input">
                     <input
                         type="text"
                         name="msgs"
@@ -25,9 +25,11 @@ export function Message({ setMsg, msg, onSaveMsg }) {
                         required
                         autoFocus
                     />
-                    <button disabled={!msg} className="btn btn-save-msg">Save</button>
-                    <button type="button" className="btn" onClick={() => setIsAddedMsg(false)}>Cancel</button>
-                </>
+                    <div className="adding-input-buttons">
+                        <button disabled={!msg || !loggedInUser} className="btn btn-save-msg">Save</button>
+                        <button type="button" className="btn" onClick={() => setIsAddedMsg(false)}>Cancel</button>
+                    </div>
+                </div>
             }
         </form>
     )

@@ -65,9 +65,19 @@
         }
     }
 
-    .form-header {
-        display: flex;
-        justify-content: space-between;
+    .adding-form {
+        .form-header {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .adding-input {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin-block-start: 1em;
+        }
     }
 
     .data-list {

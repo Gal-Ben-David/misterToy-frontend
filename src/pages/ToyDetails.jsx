@@ -6,14 +6,17 @@ import { ChatRoom } from '../cmps/ChatRoom.jsx'
 import { Message } from '../cmps/toy-details/Message.jsx'
 import { Review } from '../cmps/toy-details/Review.jsx'
 import { ToyDetailsTable } from '../cmps/toy-details/ToyDetailsTable.jsx'
+import { useSelector } from 'react-redux'
 
 export function ToyDetails() {
+    const loggedInUser = useSelector(storeState => storeState.userModule.loggedInUser)
     const [msg, setMsg] = useState('')
     const [reviews, setReviews] = useState([])
     const [review, setReview] = useState('')
     const [isChat, setIsChat] = useState(false)
     const [toy, setToy] = useState(null)
     const { toyId } = useParams()
+
 
     useEffect(() => {
         if (toyId) loadToy()
@@ -83,28 +86,33 @@ export function ToyDetails() {
                 <ToyDetailsTable toy={toy} />
 
                 <div>
-                    <Link className="btn" to={`/toy/edit/${toy._id}`}>Edit</Link> &nbsp;
                     <Link className="btn" to={`/`}>Back</Link>
+                    <Link className="btn" to={`/toy/edit/${toy._id}`}>Edit</Link>
                 </div>
 
                 <hr />
 
-                <Message onSaveMsg={onSaveMsg} msg={msg} setMsg={setMsg} />
+                <Message onSaveMsg={onSaveMsg} msg={msg} setMsg={setMsg} loggedInUser={loggedInUser} />
                 <ul className="data-list toy-msgs-details">
-                    {toy.msgs && toy.msgs.map(msg =>
-                        <li key={msg.id} className="toy-msg">
-                            <div className="data-details">
-                                <span>{msg.txt}</span>
-                                <span className="created-or-author">Added by {msg.by?.fullname || ''}</span>
-                            </div>
-                            <button onClick={() => onRemoveMsg(msg.id)} className="btn"><i className="fa-solid fa-xmark"></i></button>
-                        </li>
-                    )}
+                    {toy.msgs && toy.msgs.length === 0 ? 'No messages yet, be the first one!' :
+                        toy.msgs.map(msg =>
+                            <li key={msg.id} className="toy-msg">
+                                <div className="data-details">
+                                    <span>{msg.txt}</span>
+                                    <span className="created-or-author">Added by {msg.by?.fullname || ''}</span>
+                                </div>
+                                {
+                                    (loggedInUser && (loggedInUser.isAdmin || loggedInUser._id === msg.by._id)) &&
+                                    <button onClick={() => onRemoveMsg(msg.id)} className="btn"><i className="fa-solid fa-xmark"></i></button>
+                                }
+
+                            </li>
+                        )}
                 </ul>
 
                 <hr />
 
-                <Review review={review} setReview={setReview} onSaveReview={onSaveReview} />
+                <Review review={review} setReview={setReview} onSaveReview={onSaveReview} loggedInUser={loggedInUser} />
                 <ul className="data-list toy-review-details">
                     {reviews.length === 0 ? 'No reviews yet, be the first one!' :
                         reviews.map(review =>
@@ -122,7 +130,11 @@ export function ToyDetails() {
                                         })}
                                     </span>
                                 </div>
-                                <button className="btn" onClick={() => onRemoveReview(review._id)}><i className="fa-solid fa-xmark"></i></button>
+                                {
+                                    (loggedInUser && (loggedInUser.isAdmin || loggedInUser._id === review.userId)) &&
+                                    <button className="btn" onClick={() => onRemoveReview(review._id)}><i className="fa-solid fa-xmark"></i></button>
+                                }
+
                             </li>
                         )}
                 </ul>

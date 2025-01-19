@@ -14,9 +14,11 @@ export function ToyPreview({ toy, onRemoveToy, loggedInUser }) {
             <p className={toy.inStock ? 'available' : 'not-available'}>{toy.inStock ? 'Available' : 'Out of stock'}</p>
             {/* {toy.owner && <p>Owner: <Link to={`/user/${toy.owner._id}`}>{toy.owner.fullname}</Link></p>}
             <hr /> */}
-            <div>
-                <Link to={`/toy/edit/${toy._id}`}>Edit</Link> &nbsp; | &nbsp;
-                <Link to={`/toy/${toy._id}`}>Details</Link>
+            <div >
+                {loggedInUser && loggedInUser.isAdmin &&
+                    <><Link to={`/toy/edit/${toy._id}`} className="toy-preview-actions">Edit</Link> <span> &nbsp; | &nbsp;</span>
+                    </>}
+                <Link to={`/toy/${toy._id}`} className="toy-preview-actions">Details</Link>
             </div>
             {
                 loggedInUser && loggedInUser.isAdmin &&
