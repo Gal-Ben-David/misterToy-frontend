@@ -6,6 +6,9 @@ export function ToyPreview({ toy, onRemoveToy, loggedInUser }) {
 
     return (
         <article className="toy-preview">
+            <div className="toy-img">
+                <img src={toy.imgUrl} />
+            </div>
             <h4>{toy.name}</h4>
             <p><span>${toy.price.toLocaleString()}</span></p>
             <p className={toy.inStock ? 'available' : 'not-available'}>{toy.inStock ? 'Available' : 'Out of stock'}</p>

@@ -1,5 +1,4 @@
-import { ToyPreview } from "./ToyPreview.jsx"
-import { Link } from "react-router-dom"
+import { ToyPreview } from './ToyPreview.jsx'
 import { useSelector } from 'react-redux'
 
 export function ToyList({ toys, onRemoveToy }) {
@@ -12,9 +11,6 @@ export function ToyList({ toys, onRemoveToy }) {
             <ul className="toy-list">
                 {toys.map(toy =>
                     <li key={toy._id} className="toy-preview" >
-                        <div className="toy-img">
-                            <img src={toy.imgUrl} />
-                        </div>
                         <ToyPreview toy={toy} onRemoveToy={onRemoveToy} loggedInUser={loggedInUser} />
                     </li>)}
             </ul>
