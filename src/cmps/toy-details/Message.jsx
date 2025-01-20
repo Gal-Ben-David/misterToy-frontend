@@ -12,7 +12,7 @@ export function Message({ setMsg, msg, onSaveMsg, loggedInUser }) {
         <form className="adding-form" onSubmit={onSaveMsg}>
             <div className="form-header">
                 <h4>Messages</h4>
-                <button type="button" className="btn btn-light" onClick={() => setIsAddedMsg(prev => !prev)}>Add message</button>
+                <button type="button" className="btn btn-light" onClick={() => setIsAddedMsg(prev => !prev)}>Add</button>
             </div>
             {isAddedMsg &&
                 <div className="adding-input">

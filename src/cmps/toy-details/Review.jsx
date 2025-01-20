@@ -13,7 +13,7 @@ export function Review({ review, setReview, onSaveReview, loggedInUser }) {
         <form className="adding-form" onSubmit={onSaveReview}>
             <div className="form-header">
                 <h4>Reviews</h4>
-                <button type="button" className="btn btn-light" onClick={() => setIsAddedReview(prev => !prev)}>Add Review</button>
+                <button type="button" className="btn btn-light" onClick={() => setIsAddedReview(prev => !prev)}>Add</button>
             </div>
 
             {isAddedReview &&

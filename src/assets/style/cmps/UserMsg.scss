@@ -3,7 +3,10 @@
     align-items: center;
     gap: 10px;
     background-color: lightgray;
-    padding: .6em 1.5em;
+
+    padding: .5em 1.5em;
+    padding-inline-end: 20px;
+    margin-inline-start: 1em;
 
     position: fixed;
     right: 1em;
@@ -26,3 +29,21 @@
         background-color: transparent;
     }
 }
+
+// .user-msg.success::before {
+//     content: '\f00c';
+//     font-family: "Font Awesome 6 Free";
+//     font-weight: 900;
+//     font-size: 0.8rem;
+//     padding: 0.1em;
+//     margin-inline-end: 1em;
+// }
+
+// .user-msg.error::before {
+//     content: '\f00d';
+//     font-family: "Font Awesome 6 Free";
+//     font-weight: 900;
+//     font-size: 0.8rem;
+//     padding: 0.1em;
+//     margin-inline-end: 1em;
+// }

@@ -25,6 +25,15 @@ export function AppHeader() {
         menu.current.classList.toggle('active')
     }
 
+    function onCloseMenu() {
+        if (window.innerWidth <= 400) {
+            console.log('hi')
+            if (menu.current.classList.contains('active')) {
+                menu.current.classList.remove('active')
+            }
+        }
+    }
+
     return (
         <header className="app-header full">
             <section className="header-container">
@@ -36,12 +45,12 @@ export function AppHeader() {
                 </div>
                 <i className="fa-solid fa-ellipsis hamburger" onClick={onToggleMenu}></i>
                 <nav className="app-nav" ref={menu}>
-                    <NavLink to="/" className={({ isActive }) => (isActive ? 'active' : '')}>Toys</NavLink>
-                    <NavLink to="/about" className={({ isActive }) => (isActive ? 'active' : '')}>About</NavLink>
-                    <NavLink to="/dashboard" className={({ isActive }) => (isActive ? 'active' : '')}>Dashboard</NavLink>
+                    <NavLink to="/" className={({ isActive }) => (isActive ? 'active' : '')} onClick={onCloseMenu}>Toys</NavLink>
+                    <NavLink to="/about" className={({ isActive }) => (isActive ? 'active' : '')} onClick={onCloseMenu}>About</NavLink>
+                    <NavLink to="/dashboard" className={({ isActive }) => (isActive ? 'active' : '')} onClick={onCloseMenu}>Dashboard</NavLink>
 
                     {loggedinUser && <div className="user-info">Hello {loggedinUser.fullname} 💫</div>}
-                    <NavLink to="/login" >{loggedinUser ? <button className="btn" onClick={onLogout}>Log out</button> : 'Log in'}</NavLink>
+                    <NavLink to="/login" >{loggedinUser ? <button className="btn" onClick={() => { onLogout(); onCloseMenu() }}>Log out</button> : 'Log in'}</NavLink>
                 </nav>
             </section>
         </header>

@@ -60,7 +60,7 @@
         & li {
             background-color: $clr-btn-2;
             border-radius: 100vh;
-            padding: 0.2em 1em;
+            padding: 0.2em 1em 0em;
             font-size: 0.9rem;
         }
     }
@@ -69,6 +69,10 @@
         .form-header {
             display: flex;
             justify-content: space-between;
+
+            button {
+                padding: .3em 1em .2em;
+            }
         }
 
         .adding-input {
