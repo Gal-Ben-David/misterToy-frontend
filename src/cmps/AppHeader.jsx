@@ -50,7 +50,7 @@ export function AppHeader() {
                     <NavLink to="/dashboard" className={({ isActive }) => (isActive ? 'active' : '')} onClick={onCloseMenu}>Dashboard</NavLink>
 
                     {loggedinUser && <div className="user-info">Hello {loggedinUser.fullname} 💫</div>}
-                    <NavLink to="/login" >{loggedinUser ? <button className="btn" onClick={() => { onLogout(); onCloseMenu() }}>Log out</button> : 'Log in'}</NavLink>
+                    <NavLink to="/login" onClick={onCloseMenu}>{loggedinUser ? <button className="btn" onClick={() => { onLogout(); onCloseMenu() }}>Log out</button> : 'Log in'}</NavLink>
                 </nav>
             </section>
         </header>
