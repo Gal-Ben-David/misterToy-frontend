@@ -7,7 +7,7 @@ export function ToyPreview({ toy, onRemoveToy, loggedInUser }) {
     return (
         <article className="toy-preview">
             <div className="toy-img">
-                <img src={toy.imgUrl} />
+                <img src={toy.imgUrl} loading="lazy" />
             </div>
             <h4>{toy.name}</h4>
             <p><span>${toy.price.toLocaleString()}</span></p>
