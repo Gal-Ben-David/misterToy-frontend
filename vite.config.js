@@ -8,4 +8,9 @@ export default defineConfig({
     outDir: '../misterToy-backend/public',
     emptyOutDir: true,
   },
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    exclude: ['node_modules'],
+  },
 })
